@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0",
+  "_说明": "多义词表。一个中文词对应多个互不相干的英文法律概念时写在这里。刻意**不放进后台同步的 xlsx 词典**：那份是给业务人员按行维护的一对一表格，装不下嵌套的义项结构；而且每同步一次就会按 xlsx 重建全表，写在那边的多义词条目会被静默删掉（buildApprovedGlossary 没有 readings 字段）。放在这里，后台同步爱写什么写什么，运行时统一 merge 上来，冲不掉。",
+  "terms": [
+    {
+      "term_zh": "保证金",
+      "aliases_zh": [
+        "保证金",
+        "押金",
+        "缴存款"
+      ],
+      "official_term_en": "deposit (ambiguous — see readings)",
+      "search_terms_en": [],
+      "domain": [
+        "income_tax",
+        "gst",
+        "trade_customs"
+      ],
+      "exclusions": "⚠多义词。中文「保证金」对应至少四个互不相干的英文法律概念，不得默认映射成其中任何一个。消歧不了时必须追问用户，不要猜。",
+      "expert_notes": "2026-09-28 加。事故：用户问「ITD案件中保证金计算的基数」，因为词典里没有这个词，模型把它重新定义成了利息(interest)，答了 s.234 的利息计算基数。四个义项在案例库里都有真实例子。",
+      "source": "内部整理（2026-09-28）",
+      "status": "APPROVED",
+      "readings": [
+        {
+          "id": "pre_deposit",
+          "label_zh": "上诉前预缴的争议税款",
+          "official_term_en": "pre-deposit",
+          "context_zh": [
+            "上诉",
+            "申诉",
+            "复议",
+            "ITAT",
+            "CESTAT",
+            "GSTAT",
+            "上诉法庭",
+            "评税令",
+            "暂缓征税",
+            "stay of demand",
+            "预缴"
+          ],
+          "search_terms_en": [
+            "pre-deposit",
+            "predeposit",
+            "stay of demand",
+            "disputed tax",
+            "appeal",
+            "mandatory deposit"
+          ],
+          "domain": [
+            "income_tax",
+            "gst",
+            "trade_customs"
+          ]
+        },
+        {
+          "id": "security_deposit",
+          "label_zh": "向客户或供应商收取的押金",
+          "official_term_en": "security deposit",
+          "context_zh": [
+            "客户",
+            "租赁",
+            "押金",
+            "退还",
+            "冲回",
+            "经销商",
+            "代理商",
+            "水电"
+          ],
+          "search_terms_en": [
+            "security deposit",
+            "refundable deposit",
+            "deposit written back",
+            "capital receipt"
+          ],
+          "domain": [
+            "income_tax"
+          ]
+        },
+        {
+          "id": "performance_guarantee",
+          "label_zh": "履约/投标保证金",
+          "official_term_en": "performance or bid guarantee",
+          "context_zh": [
+            "履约",
+            "投标",
+            "招标",
+            "银行保函",
+            "EPC",
+            "工程",
+            "合同担保"
+          ],
+          "search_terms_en": [
+            "performance guarantee",
+            "bid bond",
+            "bank guarantee",
+            "earnest money deposit"
+          ],
+          "domain": [
+            "income_tax",
+            "trade_customs"
+          ]
+        },
+        {
+          "id": "customs_bond",
+          "label_zh": "海关保证金/保函",
+          "official_term_en": "customs bond or bank guarantee",
+          "context_zh": [
+            "清关",
+            "暂定评估",
+            "provisional assessment",
+            "SVB",
+            "保税",
+            "进口",
+            "出口"
+          ],
+          "search_terms_en": [
+            "bond",
+            "bank guarantee",
+            "provisional assessment",
+            "customs bond"
+          ],
+          "domain": [
+            "trade_customs"
+          ]
+        }
+      ]
+    }
+  ]
+}

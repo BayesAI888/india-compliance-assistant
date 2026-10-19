@@ -1,0 +1,170 @@
+{
+  "schema_version": "1.4",
+  "status": "DRAFT_REQUIRES_EXPERT_APPROVAL",
+  "matching_rule": "exact_host_or_subdomain_only",
+  "authorities": [
+    {
+      "id": "INDIA_CODE",
+      "name": "India Code",
+      "domains": [
+        "indiacode.nic.in"
+      ],
+      "domains_covered": [
+        "company_incorporation",
+        "mca_roc",
+        "fema_fdi_rbi",
+        "gst",
+        "income_tax_tds_tp",
+        "import_export_customs",
+        "industry_regulation",
+        "litigation_cases",
+        "tax_notice"
+      ],
+      "verification_status": "verified_official"
+    },
+    {
+      "id": "MCA",
+      "name": "Ministry of Corporate Affairs",
+      "domains": [
+        "mca.gov.in"
+      ],
+      "domains_covered": [
+        "company_incorporation",
+        "mca_roc"
+      ],
+      "verification_status": "verified_official"
+    },
+    {
+      "id": "RBI",
+      "name": "Reserve Bank of India",
+      "domains": [
+        "rbi.org.in"
+      ],
+      "domains_covered": [
+        "fema_fdi_rbi"
+      ],
+      "verification_status": "verified_official"
+    },
+    {
+      "id": "DPIIT",
+      "name": "Department for Promotion of Industry and Internal Trade",
+      "domains": [
+        "dpiit.gov.in"
+      ],
+      "domains_covered": [
+        "fema_fdi_rbi",
+        "industry_regulation"
+      ],
+      "verification_status": "verified_official"
+    },
+    {
+      "id": "CBIC_GST",
+      "name": "Central Board of Indirect Taxes and Customs - GST",
+      "domains": [
+        "cbic-gst.gov.in"
+      ],
+      "domains_covered": [
+        "gst",
+        "tax_notice"
+      ],
+      "verification_status": "verified_official"
+    },
+    {
+      "id": "GST_PORTAL",
+      "name": "GST Common Portal",
+      "domains": [
+        "gst.gov.in"
+      ],
+      "domains_covered": [
+        "gst",
+        "tax_notice"
+      ],
+      "verification_status": "expert_review_required"
+    },
+    {
+      "id": "INCOME_TAX",
+      "name": "Income Tax Department",
+      "domains": [
+        "incometax.gov.in"
+      ],
+      "domains_covered": [
+        "income_tax_tds_tp",
+        "tax_notice"
+      ],
+      "verification_status": "verified_official"
+    },
+    {
+      "id": "E_GAZETTE",
+      "name": "eGazette of India",
+      "domains": [
+        "egazette.nic.in"
+      ],
+      "domains_covered": [
+        "company_incorporation",
+        "mca_roc",
+        "fema_fdi_rbi",
+        "gst",
+        "income_tax_tds_tp",
+        "import_export_customs",
+        "industry_regulation",
+        "litigation_cases",
+        "tax_notice"
+      ],
+      "verification_status": "expert_review_required"
+    },
+    {
+      "id": "SCI",
+      "name": "Supreme Court of India",
+      "domains": [
+        "sci.gov.in",
+        "api.sci.gov.in"
+      ],
+      "domains_covered": [
+        "litigation_cases"
+      ],
+      "verification_status": "verified_official"
+    },
+    {
+      "id": "DGFT",
+      "name": "Directorate General of Foreign Trade",
+      "domains": [
+        "dgft.gov.in",
+        "content.dgft.gov.in"
+      ],
+      "domains_covered": [
+        "import_export_customs"
+      ],
+      "verification_status": "verified_official"
+    },
+    {
+      "id": "CBIC_TAX_INFO",
+      "name": "CBIC Tax Information Portal",
+      "domains": [
+        "taxinformation.cbic.gov.in"
+      ],
+      "domains_covered": [
+        "import_export_customs",
+        "gst"
+      ],
+      "verification_status": "verified_official"
+    },
+    {
+      "id": "PIB",
+      "name": "Press Information Bureau",
+      "domains": [
+        "pib.gov.in"
+      ],
+      "domains_covered": [
+        "fema_fdi_rbi",
+        "industry_regulation"
+      ],
+      "verification_status": "verified_official",
+      "note": "用于领域线巡检，不单独作为法律结论依据。"
+    }
+  ],
+  "state_authorities": {
+    "note": "州级GST来源按辖区维护，编号族 SRC-S-<辖区代码>；无立法机关的中央直辖区适用UTGST Act, 2017。",
+    "matching_rule": "州级官方域名需逐辖区核验后加入白名单，未核验前相关问题返回“暂时无法确认”。",
+    "jurisdictions_with_own_act": 31
+  }
+}

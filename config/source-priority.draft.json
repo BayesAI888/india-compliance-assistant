@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.4",
+  "status": "DRAFT_REQUIRES_EXPERT_APPROVAL",
+  "decision_order": [
+    "legal_currency_not_expired",
+    "not_superseded_by_later_source",
+    "applicability_to_subject_industry_entity_and_transaction",
+    "validity_on_target_date_at_provision_level",
+    "jurisdiction_match_for_state_and_case_law",
+    "legal_effect_level",
+    "specific_rule_over_general_rule",
+    "latest_applicable_version_and_amendments",
+    "unresolved_conflict_requires_no_definitive_conclusion"
+  ],
+  "legal_effect_levels": [
+    {
+      "id": "PRIMARY_LAW",
+      "typical_types": [
+        "ACT",
+        "TREATY"
+      ],
+      "rank": 10
+    },
+    {
+      "id": "SUBORDINATE_LEGISLATION",
+      "typical_types": [
+        "RULES",
+        "REGULATIONS",
+        "NOTIFICATION"
+      ],
+      "rank": 20
+    },
+    {
+      "id": "ADMINISTRATIVE_DIRECTION",
+      "typical_types": [
+        "CIRCULAR",
+        "MASTER_DIRECTION"
+      ],
+      "rank": 30
+    },
+    {
+      "id": "OFFICIAL_GUIDANCE",
+      "typical_types": [
+        "FAQ",
+        "PRESS_NOTE"
+      ],
+      "rank": 40
+    },
+    {
+      "id": "JUDICIAL_DECISION",
+      "typical_types": [
+        "ORDER",
+        "JUDGMENT"
+      ],
+      "rank": null,
+      "note": "法院层级、案件事实、适用范围和后续裁判必须单独判断，不能机械排序。"
+    }
+  ],
+  "mandatory_overrides": [
+    "A later applicable amendment overrides the superseded text for current questions.",
+    "A specific applicable provision may control over a general provision.",
+    "FAQ and Press Note cannot override a higher-effect applicable source.",
+    "A source with unknown date cannot alone support a current important claim.",
+    "A source whose legal currency check has expired cannot alone support a definitive conclusion.",
+    "A superseded source cannot be used for current questions; use the source that replaced it.",
+    "A provision-level effective date overrides the enclosing act effective date.",
+    "A non-jurisdictional High Court judgment must be labelled as persuasive only."
+  ],
+  "aligned_with": "《AI检索与回答规范 V1.4》§3.1、§4.1、§7；《知识库数据规范 V1.4》§8、§11",
+  "currency_rules": {
+    "inspection_tiers": {
+      "A": 30,
+      "B": 90,
+      "C": 180,
+      "D": "event_driven",
+      "E": 365
+    },
+    "expired_status": "CURRENCY_EXPIRED",
+    "expired_effect": "可召回用于发现问题，但不得单独支持确定结论；回答状态最高为需要补充信息。",
+    "superseded_effect": "被取代的来源只能用于其有效期间内的历史问题，并须标明所依据的版本与期间。"
+  },
+  "provision_level_dates": {
+    "fields": [
+      "provision_effective_from",
+      "provision_effective_to",
+      "centre_effective_from",
+      "state_adoption_date"
+    ],
+    "fallback": "留空回落到版本级 effective_from / effective_to。",
+    "state_start": "州级问题的适用起点取 max(中央对应条文生效日, 该辖区采纳日)。",
+    "mismatch_action": "被引条文在目标日期不适用的，直接删除该条引用，而不是整体降级；全部引用都不覆盖时返回 UNABLE_TO_CONFIRM 并说明缺哪个期间。"
+  },
+  "case_law_jurisdiction": {
+    "supreme_court": "对全印度有约束力，直接适用。",
+    "high_court_conflict_order": [
+      "注册地所在邦的管辖High Court",
+      "争议交易发生地或纳税申报地所在邦的管辖High Court",
+      "作出处理的机关所在地的管辖High Court"
+    ],
+    "conflict_effect": "三项指向不同High Court时，必须同时列出各判决并明示分歧，回答状态最高为需要补充信息。",
+    "non_binding": "没有管辖High Court判决时，其他High Court判决只作参考，必须标注“非管辖法院，仅供参考”，不得作为唯一依据。",
+    "tribunal": "Tribunal或Authority的裁定不得用于对抗有管辖权的High Court判决。",
+    "state_aar": "各邦AAR裁定只对申请人与该邦管辖官员有约束力，不得作为跨邦通用依据。"
+  },
+  "gst_jurisdiction": {
+    "rate_uniform_nationwide": true,
+    "rate_note": "GST税率全国统一，不得按辖区区分，也不得因辖区参数缺失而拒答税率问题。",
+    "state_difference_categories": [
+      "采纳中央修订的生效日期",
+      "注册门槛",
+      "州内e-way bill门槛",
+      "州级circular／trade notice与本邦AAR"
+    ],
+    "mirror_provisions": "实体条文与CGST逐条镜像，用CGST对应条文回答并标注镜像关系与辖区。"
+  }
+}

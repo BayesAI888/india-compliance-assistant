@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.4",
+  "status": "DRAFT_REQUIRES_EXPERT_APPROVAL",
+  "aligned_with": "《产品规则表 V1.4》§1 第一版覆盖范围",
+  "launch_domains": [
+    { "id": "company_incorporation", "label_zh": "公司设立", "enabled": true },
+    { "id": "mca_roc", "label_zh": "MCA / ROC公司合规", "enabled": true },
+    { "id": "fema_fdi_rbi", "label_zh": "FEMA / FDI / RBI（含接壤国投资准入与外债ECB）", "enabled": true },
+    { "id": "gst", "label_zh": "GST（含中央CGST/IGST、31个辖区的SGST/GST Act及UTGST）", "enabled": true },
+    { "id": "income_tax_tds_tp", "label_zh": "所得税 / TDS / 转让定价（含中印税收协定适用性）", "enabled": true },
+    { "id": "import_export_customs", "label_zh": "进出口与海关", "enabled": true },
+    { "id": "industry_regulation", "label_zh": "行业准入限制", "enabled": true },
+    { "id": "litigation_cases", "label_zh": "相关判例", "enabled": true },
+    { "id": "tax_notice", "label_zh": "税务Notice", "enabled": true }
+  ],
+  "out_of_scope": [
+    { "id": "data_protection", "label_zh": "数据保护（DPDP）" },
+    { "id": "labor_employment", "label_zh": "劳动用工与社保" },
+    { "id": "licenses", "label_zh": "经营许可证" },
+    { "id": "winding_up_insolvency", "label_zh": "公司注销与破产" },
+    { "id": "intellectual_property", "label_zh": "知识产权" },
+    { "id": "shops_establishments", "label_zh": "Shops & Establishments" },
+    { "id": "profession_tax", "label_zh": "专业税" }
+  ],
+  "scope_disclosure": {
+    "proactive_homepage_notice": false,
+    "note": "《产品规则表 V1.4》：不在首页或输入区主动公示范围。但用户提出范围外问题时，回答中必须说明该领域不在本版回答范围，不得只给笼统的“暂时无法确认”。本次不扣次。"
+  },
+  "gst_jurisdiction_model": {
+    "rate_uniform_nationwide": true,
+    "rate_note": "GST税率由GST Council统一建议，中央与各邦发平行通知，全国一致，不存在邦际差异。",
+    "state_difference_categories": [
+      "各邦通过本邦修正案采纳中央修订的生效日期",
+      "注册门槛（普通邦与特别类别邦不同，且各邦可自行选择是否上调）",
+      "州内 e-way bill 门槛及豁免商品",
+      "州级 circular／trade notice 与本邦 AAR 预裁定"
+    ],
+    "substantive_provisions_note": "各邦SGST Act实体条文与CGST Act逐条镜像且条号一致，用CGST对应条文回答并标注镜像关系，不重复导入各邦全文。",
+    "jurisdictions_with_own_act": 31,
+    "utgst_note": "无立法机关的中央直辖区适用 Union Territory GST Act, 2017。德里、本地治里、查谟-克什米尔为有立法机关的UT，视同邦。"
+  }
+}

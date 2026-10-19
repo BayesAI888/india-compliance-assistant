@@ -1,0 +1,337 @@
+.admin-shell { min-height: 100vh; display: grid; grid-template-columns: 248px minmax(0, 1fr); background: #f5f8fa; }
+.admin-sidebar { position: sticky; top: 0; height: 100vh; padding: 25px 18px 20px; display: flex; flex-direction: column; background: #082b4d; color: white; }
+.admin-brand { display: flex; gap: 11px; align-items: center; padding: 0 5px; }
+.admin-brand > span { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 11px; background: linear-gradient(145deg, #66afd6, #2477ad); font-size: 17px; font-weight: 900; }
+.admin-brand > div { display: flex; flex-direction: column; gap: 4px; }
+.admin-brand strong { font-size: 13px; }
+.admin-brand small { color: #7ea5bf; font-size: 8px; letter-spacing: .08em; }
+.admin-sidebar nav { margin-top: 35px; display: grid; gap: 5px; }
+.admin-sidebar nav button { padding: 11px 12px; display: flex; align-items: center; gap: 10px; border: 0; border-radius: 10px; background: transparent; color: #a9c1d1; font-size: 11px; text-align: left; cursor: pointer; }
+.admin-sidebar nav button:hover, .admin-sidebar nav button.active { background: rgba(255,255,255,.09); color: white; }
+.admin-sidebar nav i { width: 6px; height: 6px; border: 1px solid #7099b3; border-radius: 50%; }
+.admin-sidebar nav button.active i { border-color: #69bee8; background: #69bee8; }
+.admin-security { margin-top: auto; padding: 13px; display: flex; align-items: center; gap: 10px; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; background: rgba(255,255,255,.04); }
+.admin-security > span { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 9px; background: rgba(93,183,226,.12); color: #79c8eb; font-size: 8px; font-weight: 900; }
+.admin-security p { margin: 0; display: flex; flex-direction: column; gap: 3px; }
+.admin-security strong { font-size: 9px; }
+.admin-security small { color: #769ab2; font-size: 7px; }
+.admin-sidebar > a { margin-top: 13px; padding: 10px; color: #8facbf; font-size: 9px; text-decoration: none; text-align: center; }
+.admin-main { min-width: 0; padding: 42px clamp(30px, 5vw, 72px) 80px; }
+.admin-header { display: flex; justify-content: space-between; align-items: center; }
+.admin-header > div:first-child > span, .admin-section-title span { color: #327eaa; font-size: 8px; font-weight: 900; letter-spacing: .16em; }
+.admin-header h1 { margin: 7px 0 0; color: #0b2f53; font-family: "STSong", "Songti SC", serif; font-size: 35px; }
+.admin-header-actions { display: flex; align-items: center; gap: 12px; }
+.admin-header-actions button { padding: 8px 11px; border: 1px solid #d5e1e8; border-radius: 9px; background: white; color: #607787; font-size: 9px; }
+.admin-avatar { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: #dcecf5; color: #1a628e; font-size: 10px; font-weight: 900; }
+.admin-stats { margin-top: 31px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.admin-stats article { padding: 17px; display: flex; flex-direction: column; border: 1px solid #dbe5eb; border-radius: 13px; background: white; }
+.admin-stats small { color: #708494; font-size: 9px; }
+.admin-stats strong { margin: 10px 0 6px; color: #0b2f53; font-family: Georgia, serif; font-size: 27px; }
+.admin-stats span { color: #9aa8b1; font-size: 8px; }
+.upload-card { margin-top: 14px; padding: 24px; border: 1px solid #d8e4eb; border-radius: 16px; background: white; }
+.upload-copy { display: grid; grid-template-columns: 36px 1fr; gap: 15px; align-items: start; }
+.upload-index { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 9px; background: #e6f2f8; color: #2876a4; font-size: 9px; font-weight: 900; }
+.upload-copy h2 { margin: 1px 0 7px; color: #173b56; font-size: 15px; }
+.upload-copy p { max-width: 700px; margin: 0; color: #718696; font-size: 10px; line-height: 1.65; }
+.upload-zone { width: 100%; margin-top: 20px; min-height: 155px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px dashed #a9c7d9; border-radius: 13px; background: #f5fafc; cursor: pointer; }
+.upload-zone:hover { border-color: #4f9bc9; background: #f0f8fc; }
+.upload-zone:disabled { opacity: .55; cursor: wait; }
+.upload-symbol { width: 43px; height: 43px; display: grid; place-items: center; border-radius: 12px; background: #dceef7; color: #1d6f9f; font-size: 9px; font-weight: 900; }
+.upload-zone strong { margin-top: 11px; color: #234e69; font-size: 11px; }
+.upload-zone small { margin-top: 5px; color: #8b9ba6; font-size: 8px; }
+.admin-error { margin: 12px 0 0; color: #b34848; font-size: 9px; }
+.format-contract, .validation-result { margin-top: 14px; padding: 24px; border: 1px solid #d8e4eb; border-radius: 16px; background: white; }
+.admin-section-title { display: flex; justify-content: space-between; align-items: end; gap: 20px; }
+.admin-section-title h2 { margin: 6px 0 0; color: #173b56; font-size: 15px; }
+.admin-section-title > small { color: #8c9ca7; font-size: 8px; }
+.format-contract pre { margin: 18px 0 0; padding: 18px; overflow-x: auto; border: 1px solid #dde8ee; border-radius: 11px; background: #f5f8fa; color: #35566c; font: 10px/1.75 ui-monospace, SFMono-Regular, Menlo, monospace; white-space: pre-wrap; }
+.validation-summary { display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+.validation-badge { display: inline-block; padding: 5px 8px; border-radius: 99px; font-size: 8px; font-weight: 900; }
+.validation-badge.ready { background: #e7f4ee; color: #227159; }
+.validation-badge.failed { background: #faeaea; color: #a64242; }
+.validation-summary h2 { margin: 11px 0 5px; color: #173b56; font-size: 15px; }
+.validation-summary p { margin: 0; color: #8293a0; font-size: 9px; }
+.validation-summary > button { padding: 10px 13px; border: 0; border-radius: 9px; background: #0b2f53; color: white; font-size: 9px; font-weight: 800; cursor: pointer; }
+.validation-summary > button:disabled { background: #e8edf0; color: #94a1aa; }
+.issue-grid { margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.issue-card { padding: 15px; border-radius: 11px; }
+.issue-card > strong { font-size: 9px; }
+.issue-card ul { margin: 9px 0 0; padding-left: 17px; }
+.issue-card li { padding: 3px 0; font-size: 9px; line-height: 1.55; }
+.issue-error { background: #fcf1f1; color: #9c4545; }
+.issue-warning { background: #fff7e8; color: #94621f; }
+/* 适用期间提示条：现行有效用中性蓝，已废止（标了失效日）用醒目的橙色。 */
+.applicability-banner { margin-top: 18px; padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; border-radius: 11px; background: #eef5fa; color: #2c5875; }
+.applicability-banner.expired { background: #fdf0e3; color: #8a5218; border: 1px solid #e8c79c; }
+.applicability-banner > strong { font-size: 11px; }
+.applicability-banner > span { font-size: 9px; line-height: 1.6; }
+.chunk-preview { margin-top: 25px; }
+.admin-table-wrap { margin-top: 14px; overflow-x: auto; border: 1px solid #dce7ed; border-radius: 11px; }
+.admin-table-wrap table { width: 100%; border-collapse: collapse; min-width: 760px; }
+.admin-table-wrap th { padding: 10px 12px; background: #0d3557; color: white; font-size: 8px; text-align: left; }
+.admin-table-wrap td { padding: 12px; border-top: 1px solid #e5edf2; color: #526c7e; font-size: 9px; }
+.admin-table-wrap tbody tr:nth-child(even) { background: #f7fafc; }
+.admin-table-wrap td:first-child { display: flex; flex-direction: column; gap: 4px; }
+.admin-table-wrap td strong { color: #244a65; }
+.admin-table-wrap td span { color: #8b9ba6; font-size: 8px; }
+.admin-table-wrap a { color: #1f72a2; text-decoration: none; }
+.questions-intro { margin-top: 28px; padding: 22px 24px; display: flex; justify-content: space-between; gap: 24px; border: 1px solid #d8e4eb; border-radius: 16px; background: white; }
+.questions-intro > div > span, .question-detail-title span:first-child, .question-analysis-block > span, .question-analysis-grid span, .question-citations > span { color: #327eaa; font-size: 8px; font-weight: 900; letter-spacing: .13em; }
+.questions-intro h2 { margin: 7px 0; color: #173b56; font-size: 16px; }
+.questions-intro p { max-width: 650px; margin: 0; color: #708494; font-size: 9px; line-height: 1.7; }
+.questions-intro > small { align-self: flex-start; padding: 7px 10px; border-radius: 99px; background: #edf6fa; color: #2876a4; font-size: 8px; white-space: nowrap; }
+.questions-layout { margin-top: 14px; display: grid; grid-template-columns: minmax(280px, .82fr) minmax(0, 1.35fr); gap: 14px; align-items: start; }
+.questions-list, .question-detail { border: 1px solid #d8e4eb; border-radius: 16px; background: white; }
+.questions-list { max-height: 740px; overflow-y: auto; padding: 8px; }
+.questions-list button { width: 100%; padding: 13px; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; border: 0; border-radius: 11px; background: transparent; color: #31546a; text-align: left; cursor: pointer; }
+.questions-list button:hover, .questions-list button.active { background: #edf6fa; }
+.questions-list button.active { box-shadow: inset 3px 0 0 #388fc1; }
+.questions-list button strong { display: -webkit-box; overflow: hidden; color: #234e69; font-size: 10px; line-height: 1.55; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.questions-list button small { color: #8497a4; font-size: 8px; }
+.questions-empty { padding: 38px 20px; color: #81929e; font-size: 10px; text-align: center; }
+.question-status { display: inline-block; padding: 4px 7px; border-radius: 99px; font-size: 8px; font-weight: 900; }
+.question-status-SUFFICIENT { background: #e7f4ee; color: #227159; }
+.question-status-NEED_INFORMATION { background: #fff4df; color: #9a611e; }
+.question-status-UNABLE_TO_CONFIRM, .question-status-QUOTA_EXHAUSTED { background: #faeaea; color: #a64242; }
+.question-status-PROCESSING { background: #e7f2f8; color: #2876a4; }
+.question-detail { padding: 24px; }
+.question-detail-title { display: flex; justify-content: space-between; align-items: start; gap: 16px; padding-bottom: 17px; border-bottom: 1px solid #e4edf2; }
+.question-detail-title h2 { margin: 7px 0 0; color: #173b56; font-size: 18px; }
+.question-meta { margin: 18px 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px 22px; }
+.question-meta div { min-width: 0; }
+.question-meta dt { margin-bottom: 4px; color: #8497a4; font-size: 8px; }
+.question-meta dd { margin: 0; overflow-wrap: anywhere; color: #31546a; font-size: 9px; line-height: 1.45; }
+.question-analysis-block { margin-top: 13px; padding: 13px 14px; border: 1px solid #e0ebf1; border-radius: 11px; background: #f8fbfc; }
+.question-analysis-block p { margin: 7px 0 0; overflow-wrap: anywhere; color: #35596f; font-size: 10px; line-height: 1.65; white-space: pre-wrap; }
+.question-analysis-grid { margin-top: 13px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+.question-analysis-grid div { padding: 12px; border: 1px solid #e0ebf1; border-radius: 10px; background: white; }
+.question-analysis-grid strong { display: block; margin-top: 6px; overflow-wrap: anywhere; color: #31546a; font-size: 9px; line-height: 1.5; }
+.question-citations { margin-top: 16px; padding-top: 16px; border-top: 1px solid #e4edf2; }
+.question-citations p { margin: 8px 0 0; color: #8798a4; font-size: 9px; }
+.question-citations ul { margin: 9px 0 0; padding-left: 17px; }
+.question-citations li { margin: 7px 0; color: #31546a; font-size: 9px; }
+.question-citations li small { display: block; margin-top: 3px; color: #899aa6; font-size: 8px; }
+.question-full-answer { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 16px; padding: 14px; border: 1px solid #bed5e5; border-radius: 12px; background: #f4f9fc; }
+.question-full-answer > div > span, .question-full-answer-head > div > span, .question-view-log > span { color: #327eaa; font-size: 8px; font-weight: 900; letter-spacing: .13em; }
+.question-full-answer p { margin: 5px 0 0; color: #547083; font-size: 9px; line-height: 1.55; }
+.question-full-answer button { flex: 0 0 auto; }
+.question-full-answer-error { margin: 10px 0 0; color: #a64242; font-size: 10px; }
+.question-full-answer-content { margin-top: 16px; padding: 18px; border: 1px solid #b9d3e3; border-radius: 14px; background: #fff; }
+.question-full-answer-head { display: flex; justify-content: space-between; align-items: start; gap: 12px; padding-bottom: 13px; border-bottom: 1px solid #e4edf2; }
+.question-full-answer-head h3 { margin: 6px 0 0; color: #173b56; font-size: 15px; }
+.question-full-answer-head > small { color: #8497a4; font-size: 8px; }
+.question-full-answer-section { margin-top: 16px; }
+.question-full-answer-section h4 { margin: 0 0 8px; color: #31546a; font-size: 10px; }
+.question-full-answer-section p, .question-full-answer-section li { color: #35596f; font-size: 10px; line-height: 1.65; }
+.question-full-answer-section ul, .question-full-answer-section ol { margin: 0; padding-left: 18px; }
+.question-full-answer-section li { margin: 7px 0; }
+.question-full-answer-section li p { margin: 0 0 3px; }
+.question-full-answer-section li small { display: block; color: #8497a4; font-size: 8px; }
+.question-full-answer-section li em { display: block; margin-top: 4px; color: #a35d2c; font-size: 8px; font-style: normal; }
+.question-full-answer-section blockquote { margin: 6px 0 0; padding-left: 9px; border-left: 2px solid #bed5e5; color: #668090; font-size: 9px; white-space: pre-wrap; }
+.question-full-answer-raw { margin-top: 16px; border-top: 1px solid #e4edf2; padding-top: 13px; }
+.question-full-answer-raw summary { cursor: pointer; color: #327eaa; font-size: 9px; font-weight: 800; }
+.question-full-answer-raw pre { max-height: 420px; margin: 10px 0 0; overflow: auto; padding: 12px; border-radius: 9px; background: #173b56; color: #e8f4fa; font-size: 8px; line-height: 1.5; white-space: pre-wrap; overflow-wrap: anywhere; }
+.question-view-log { margin-top: 16px; padding-top: 13px; border-top: 1px solid #e4edf2; }
+.question-view-log p, .question-view-log li { margin: 6px 0 0; color: #728996; font-size: 8px; }
+.question-view-log ul { margin: 0; padding-left: 16px; }
+.source-config-card { margin-top: 20px; padding: 22px; border: 1px solid #d8e4eb; border-radius: 16px; background: white; }
+.source-config-card .admin-section-title { margin-bottom: 15px; }
+.source-config-card td a { display: block; margin: 3px 0; color: #2772a0; overflow-wrap: anywhere; }
+.source-config-card td > span { display: block; margin-top: 4px; color: #7c919f; font-size: 8px; line-height: 1.45; }
+.source-status { display: inline-block; padding: 4px 7px; border-radius: 99px; font-size: 8px; font-weight: 900; white-space: nowrap; }
+.source-status-verified_official { background: #e7f4ee; color: #227159; }
+.source-status-expert_review_required { background: #fff4df; color: #9a611e; }
+.source-state-note { margin: 12px 0 0; color: #567183; font-size: 9px; line-height: 1.65; }
+.source-config-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.source-review-order { margin: 0; padding: 0; list-style: none; counter-reset: source-review; }
+.source-review-order li { display: flex; align-items: start; gap: 9px; margin: 9px 0; color: #35596f; font-size: 10px; line-height: 1.5; }
+.source-review-order b { display: inline-grid; flex: 0 0 18px; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: #e8f3f9; color: #2876a4; font-size: 8px; }
+.source-effect-list { display: grid; gap: 8px; }
+.source-effect-list article { padding: 11px; border: 1px solid #e0ebf1; border-radius: 10px; background: #f8fbfc; }
+.source-effect-list strong, .source-effect-list span, .source-effect-list small { display: block; }
+.source-effect-list strong { color: #31546a; font-size: 10px; }
+.source-effect-list span { margin-top: 4px; color: #5d7788; font-size: 8px; }
+.source-effect-list small { margin-top: 4px; color: #869aa6; font-size: 8px; line-height: 1.45; }
+.source-scope-card { display: grid; grid-template-columns: minmax(160px, .45fr) 1fr 1fr; gap: 20px; align-items: start; }
+.source-scope-card .admin-section-title { margin: 0; }
+.source-scope-card h3 { margin: 0; color: #31546a; font-size: 10px; }
+.source-scope-card p { margin: 7px 0 0; color: #5d7788; font-size: 9px; line-height: 1.7; }
+@media (max-width: 860px) {
+  .source-config-grid, .source-scope-card { grid-template-columns: 1fr; }
+  .question-full-answer { align-items: start; flex-direction: column; }
+}
+.admin-placeholder { min-height: 440px; margin-top: 31px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px dashed #cddce5; border-radius: 16px; background: rgba(255,255,255,.62); text-align: center; }
+.admin-placeholder > span { padding: 5px 8px; border-radius: 99px; background: #e7f2f8; color: #2a77a4; font-size: 8px; font-weight: 900; }
+.admin-placeholder h2 { margin: 15px 0 7px; color: #173b56; font-size: 18px; }
+.admin-placeholder p { margin: 0; color: #81929e; font-size: 10px; }
+.admin-placeholder button { margin-top: 17px; padding: 9px 12px; border: 0; border-radius: 8px; background: #0b2f53; color: white; font-size: 9px; cursor: pointer; }
+.review-workspace { margin-top: 31px; }
+.review-toolbar { padding: 21px 23px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border: 1px solid #d8e4eb; border-radius: 16px; background: white; }
+.text-button { padding: 0; border: 0; background: transparent; color: #26739f; font-size: 9px; cursor: pointer; }
+.review-toolbar h2 { margin: 10px 0 5px; color: #173b56; font-size: 17px; }
+.review-toolbar p { margin: 0; color: #8293a0; font-size: 9px; }
+.review-status { flex: 0 0 auto; padding: 6px 9px; border-radius: 99px; background: #fff1d9; color: #99601d; font-size: 8px; font-weight: 900; }
+.review-status.published { background: #e7f4ee; color: #227159; }
+.publish-success { margin-top: 12px; padding: 14px 17px; display: flex; flex-direction: column; gap: 4px; border: 1px solid #c8e4d8; border-radius: 12px; background: #eff8f4; color: #28674f; }
+.publish-success strong { font-size: 10px; }
+.publish-success span { font-size: 9px; line-height: 1.55; }
+.review-layout { margin-top: 12px; display: grid; grid-template-columns: minmax(220px, 270px) minmax(0, 1fr); gap: 12px; align-items: start; }
+.chunk-list, .chunk-review-card { border: 1px solid #d8e4eb; border-radius: 16px; background: white; }
+.chunk-list { position: sticky; top: 20px; overflow: hidden; }
+.chunk-list-title { padding: 15px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #e3ebf0; color: #234e69; font-size: 9px; }
+.chunk-list-title span { color: #8a9aa5; }
+.chunk-list-scroll { max-height: 620px; overflow-y: auto; padding: 7px; }
+.chunk-list-scroll button { width: 100%; padding: 10px; display: grid; grid-template-columns: 31px minmax(0, 1fr) auto; gap: 7px; align-items: center; border: 0; border-radius: 9px; background: transparent; color: #708494; text-align: left; cursor: pointer; }
+.chunk-list-scroll button:hover, .chunk-list-scroll button.active { background: #edf6fa; color: #214f6c; }
+.chunk-list-scroll button > span { font-size: 8px; }
+.chunk-list-scroll button > strong { overflow: hidden; font-size: 8px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+.chunk-list-scroll button > i { padding: 3px 5px; border-radius: 99px; background: #fff0d7; color: #9a611d; font-size: 7px; font-style: normal; white-space: nowrap; }
+.chunk-review-card { min-width: 0; padding: 23px; }
+.chunk-review-head { display: flex; align-items: start; justify-content: space-between; gap: 20px; }
+.chunk-review-head > div:first-child > span { color: #327eaa; font-size: 8px; font-weight: 900; letter-spacing: .12em; }
+.chunk-review-head h3 { margin: 8px 0 0; color: #173b56; font-size: 15px; line-height: 1.45; }
+.chunk-pager { display: flex; gap: 6px; }
+.chunk-pager button { padding: 7px 9px; border: 1px solid #d6e2e9; border-radius: 8px; background: white; color: #557184; font-size: 8px; cursor: pointer; }
+.chunk-pager button:disabled { opacity: .4; cursor: default; }
+.chunk-warning { margin: 15px 0 0; padding: 10px 12px; border-radius: 9px; background: #fff6e6; color: #94621f; font-size: 9px; }
+.chunk-meta { margin: 19px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; overflow: hidden; border: 1px solid #e0e9ee; border-radius: 11px; background: #e0e9ee; }
+.chunk-meta > div { padding: 12px; display: flex; flex-direction: column; gap: 5px; background: #f9fbfc; }
+.chunk-meta dt { color: #8a9ba6; font-size: 8px; }
+.chunk-meta dd { margin: 0; color: #3d5d71; font-size: 9px; line-height: 1.45; overflow-wrap: anywhere; }
+.chunk-meta dd a { color: #1f72a2; text-decoration: none; }
+.chunk-meta dd small { margin-top: 3px; display: block; color: #a06b27; font-size: 7px; }
+.official-body { margin-top: 18px; overflow: hidden; border: 1px solid #dce7ed; border-radius: 11px; }
+.official-body > div { padding: 10px 13px; display: flex; justify-content: space-between; background: #0d3557; color: white; }
+.official-body strong { font-size: 9px; }
+.official-body span { color: #99bdd2; font-size: 8px; }
+.official-body pre { max-height: 520px; margin: 0; padding: 17px; overflow: auto; background: #f7fafc; color: #334f61; font: 9px/1.75 ui-monospace, SFMono-Regular, Menlo, monospace; white-space: pre-wrap; }
+.publish-panel { margin-top: 12px; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border: 1px solid #d8e4eb; border-radius: 14px; background: white; }
+.publish-panel label { display: flex; align-items: start; gap: 9px; color: #4b6678; font-size: 9px; line-height: 1.5; cursor: pointer; }
+.publish-panel input { margin-top: 1px; accent-color: #166b9d; }
+.publish-panel button { flex: 0 0 auto; padding: 10px 13px; border: 0; border-radius: 9px; background: #0b2f53; color: white; font-size: 9px; font-weight: 800; cursor: pointer; }
+.publish-panel button:disabled { background: #dfe7eb; color: #8c9aa3; cursor: default; }
+@media (max-width: 840px) {
+  .admin-shell { grid-template-columns: 1fr; }
+  .admin-sidebar { position: static; height: auto; padding: 14px 16px; }
+  .admin-sidebar nav { margin-top: 15px; display: flex; overflow-x: auto; }
+  .admin-sidebar nav button { flex: 0 0 auto; }
+  .admin-security, .admin-sidebar > a { display: none; }
+  .admin-main { padding: 28px 16px 60px; }
+  .admin-stats { grid-template-columns: 1fr 1fr; }
+  .issue-grid { grid-template-columns: 1fr; }
+  .review-layout { grid-template-columns: 1fr; }
+  .chunk-list { position: static; }
+  .chunk-list-scroll { max-height: 250px; }
+  .chunk-meta { grid-template-columns: 1fr; }
+  .publish-panel { align-items: stretch; flex-direction: column; }
+}
+
+/* 总览：知识库结构（资料 → 章 → 节） */
+.overview-list { margin-top: 31px; }
+.overview-category { margin-top: 26px; }
+.overview-category:first-child { margin-top: 14px; }
+.overview-category-title {
+  margin: 0 0 4px; padding: 0 2px; display: flex; align-items: center; gap: 8px;
+  color: #173b56; font-size: 11px; font-weight: 800; letter-spacing: .02em;
+}
+.overview-category-count {
+  padding: 2px 8px; border-radius: 99px; background: #eef4f8; color: #5c7386;
+  font-size: 8px; font-weight: 900;
+}
+.overview-doc { margin-top: 10px; border: 1px solid #dbe5eb; border-radius: 13px; background: white; overflow: hidden; }
+.overview-doc-row { display: flex; align-items: center; gap: 8px; }
+.overview-doc-head {
+  flex: 1 1 auto; min-width: 0; padding: 14px 16px; display: flex; align-items: center; gap: 12px;
+  border: 0; background: none; text-align: left; cursor: pointer;
+}
+.overview-doc-head:hover { background: #f7fafc; }
+.overview-status { flex: 0 0 auto; padding: 4px 7px; border-radius: 99px; font-size: 8px; font-weight: 900; }
+.overview-status.is-published { background: #e7f4ee; color: #227159; }
+.overview-status.is-review { background: #fff4df; color: #a86118; }
+.overview-status.is-withdrawn { background: #f1f3f5; color: #5f6b76; }
+.overview-doc-actions { flex: 0 0 auto; display: flex; align-items: center; gap: 6px; padding-right: 16px; }
+.overview-doc-actions button {
+  padding: 7px 11px; border: 0; border-radius: 8px; background: #e9f2f8; color: #2a77a4;
+  font-size: 9px; font-weight: 800; cursor: pointer; white-space: nowrap;
+}
+.overview-doc-actions button.danger { background: #fbe9e9; color: #b34848; }
+.overview-doc-actions button.ghost { background: #eef1f3; color: #5c7386; }
+.overview-doc-actions button:disabled { opacity: .5; cursor: not-allowed; }
+.overview-doc-message { margin: 0 16px 12px; color: #b34848; font-size: 9px; }
+.overview-doc-name { flex: 1 1 auto; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.overview-doc-name strong { color: #173b56; font-size: 12px; }
+.overview-doc-name small { color: #8c9ca7; font-size: 9px; }
+.overview-toggle { flex: 0 0 auto; color: #327eaa; font-size: 9px; font-weight: 800; }
+.overview-doc-body { padding: 0 16px 16px; border-top: 1px solid #edf3f7; }
+.overview-sources { margin: 12px 0; color: #5c7386; font-size: 10px; line-height: 1.6; }
+.overview-sources strong { color: #173b56; }
+.overview-table { width: 100%; border-collapse: collapse; font-size: 10px; }
+.overview-table th {
+  padding: 8px; border-bottom: 1px solid #dbe5eb; background: #f7fafc;
+  color: #173b56; font-size: 9px; font-weight: 800; text-align: left; white-space: nowrap;
+}
+.overview-table td { padding: 8px; border-bottom: 1px solid #eef3f7; color: #5c7386; line-height: 1.6; vertical-align: top; }
+.overview-table td:nth-child(2) { width: 60px; color: #2a77a4; font-weight: 700; }
+.overview-table tr:last-child td { border-bottom: 0; }
+
+/* 案例九字段表：和 overview-table 共享外观，但第二列是长文本列表，不能套用 overview-table 那条「第二列窄+蓝色加粗」的规则 */
+.case-field-table { width: 100%; border-collapse: collapse; font-size: 10px; }
+.case-field-table td { padding: 8px; border-bottom: 1px solid #eef3f7; color: #5c7386; line-height: 1.6; vertical-align: top; }
+.case-field-table tr:last-child td { border-bottom: 0; }
+.case-field-table td:first-child { width: 22%; color: #173b56; font-weight: 700; white-space: nowrap; }
+.case-field-table ul { margin: 0; padding-left: 16px; }
+.case-field-table li { margin-bottom: 4px; }
+.case-field-table li:last-child { margin-bottom: 0; }
+
+/* 混合检索状态条 */
+.vector-bar {
+  margin-top: 14px; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; border: 1px solid #dbe5eb; border-radius: 13px; background: white; flex-wrap: wrap;
+}
+.vector-bar strong { display: block; color: #173b56; font-size: 12px; }
+.vector-bar small { display: block; margin-top: 4px; color: #8c9ca7; font-size: 9px; line-height: 1.6; }
+.vector-bar-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.vector-message { color: #327eaa; font-size: 9px; }
+.vector-bar button {
+  padding: 8px 12px; border: 0; border-radius: 8px; background: #0b2f53; color: white;
+  font-size: 9px; font-weight: 800; cursor: pointer;
+}
+.vector-bar button.ghost { background: #e9f2f8; color: #2a77a4; }
+.vector-bar button:disabled { opacity: .45; cursor: not-allowed; }
+
+/* 法律位阶选择器。放在总览的资料行里，和下架按钮同排——
+   它是每份资料都要核的字段，藏进展开区就没人会改。 */
+.overview-hierarchy {
+  display: flex; align-items: center; gap: 6px;
+  padding: 0 10px; white-space: nowrap;
+}
+.overview-hierarchy label { font-size: 12px; color: #667b8e; }
+.overview-hierarchy select {
+  font-size: 12px; padding: 4px 6px; border: 1px solid #d8e5ee;
+  border-radius: 6px; background: #fff; color: #2f4a61; max-width: 190px;
+}
+.overview-hierarchy select:disabled { opacity: .55; cursor: wait; }
+/* "未确认"要显眼：位阶判错会让一份 circular 被当成 Act 去锚定结论，
+   而推断值出错时没有任何其他信号，只能靠这个标记让人看见。 */
+.overview-hierarchy-unconfirmed {
+  font-size: 11px; font-weight: 700; color: #b3341f;
+  background: #fbe9e7; padding: 2px 7px; border-radius: 99px;
+}
+
+/* 「确认」按钮：确认推断值和改成别的是两个动作，各有各的入口。
+   下拉的 onChange 只在值真的变了才触发，靠它做不了"确认"。 */
+.overview-hierarchy-confirm {
+  padding: 3px 10px; font-size: 11px; font-weight: 700;
+  border-radius: 99px; white-space: nowrap;
+}
+/* 按类别批量确认。放在类别标题行上——同类资料并排列着，一眼能扫完再决定。 */
+.overview-category-confirm {
+  margin-left: 12px; padding: 4px 12px;
+  font-size: 11px; font-weight: 700; border-radius: 99px; white-space: nowrap;
+}
+.overview-category-confirm:disabled { opacity: .55; cursor: wait; }
+
+/* 版本指纹：等宽字体，方便和 curl /api/health 的输出逐字符比对。
+   比对不上就是没部署——这是这个字段存在的全部意义。 */
+.build-hash { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 18px; letter-spacing: .02em; }

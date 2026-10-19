@@ -1,0 +1,49 @@
+// SCRATCH FILE — sandbox-only, for typecheck verification while pdf-parse/mammoth/
+// word-extractor/tencentcloud-sdk-nodejs-ocr couldn't be pnpm-installed in this
+// environment. DELETE before finishing (renamed to .disabled if rm fails).
+declare module "pdf-parse" {
+  export class PDFParse {
+    constructor(options: { data: Buffer | Uint8Array });
+    getText(): Promise<{ text: string }>;
+    destroy(): Promise<void>;
+  }
+}
+declare module "mammoth" {
+  export function extractRawText(input: { buffer: Buffer }): Promise<{ value: string; messages: unknown[] }>;
+}
+declare module "word-extractor" {
+  class Document {
+    getBody(): string;
+  }
+  export default class WordExtractor {
+    extract(input: string | Buffer): Promise<Document>;
+  }
+}
+declare module "tencentcloud-sdk-nodejs-ocr" {
+  interface ClientConfig {
+    credential: { secretId?: string; secretKey?: string; token?: string };
+    region?: string;
+    profile?: { httpProfile?: { endpoint?: string; reqTimeout?: number } };
+  }
+  interface TextDetection {
+    DetectedText?: string;
+    Confidence?: number;
+  }
+  interface GeneralBasicOCRRequest {
+    ImageBase64?: string;
+    ImageUrl?: string;
+  }
+  interface GeneralBasicOCRResponse {
+    TextDetections?: TextDetection[];
+    RequestId?: string;
+  }
+  namespace ocr {
+    namespace v20181119 {
+      class Client {
+        constructor(config: ClientConfig);
+        GeneralBasicOCR(req: GeneralBasicOCRRequest): Promise<GeneralBasicOCRResponse>;
+      }
+    }
+  }
+  export { ocr };
+}

@@ -1,0 +1,250 @@
+{
+  "schema_version": "1.4",
+  "status": "DRAFT_REQUIRES_EXPERT_APPROVAL",
+  "terms": [
+    {
+      "term_zh": "印度股东",
+      "official_term_en": "Indian shareholder",
+      "synonyms": [
+        "resident shareholder"
+      ],
+      "domain": [
+        "company_incorporation",
+        "fema_fdi_rbi"
+      ]
+    },
+    {
+      "term_zh": "印度居民董事",
+      "official_term_en": "resident director",
+      "synonyms": [
+        "director resident in India"
+      ],
+      "domain": [
+        "company_incorporation",
+        "mca_roc"
+      ]
+    },
+    {
+      "term_zh": "外国投资者",
+      "official_term_en": "foreign investor",
+      "synonyms": [
+        "person resident outside India",
+        "non-resident investor"
+      ],
+      "domain": [
+        "fema_fdi_rbi"
+      ]
+    },
+    {
+      "term_zh": "最终受益所有人",
+      "official_term_en": "beneficial owner",
+      "abbreviation": "BO",
+      "synonyms": [
+        "ultimate beneficial owner",
+        "UBO"
+      ],
+      "domain": [
+        "company_incorporation",
+        "fema_fdi_rbi"
+      ]
+    },
+    {
+      "term_zh": "控制权",
+      "official_term_en": "control",
+      "synonyms": [
+        "ownership and control"
+      ],
+      "domain": [
+        "company_incorporation",
+        "fema_fdi_rbi"
+      ]
+    },
+    {
+      "term_zh": "自动路径",
+      "official_term_en": "automatic route",
+      "synonyms": [
+        "automatic approval route"
+      ],
+      "domain": [
+        "fema_fdi_rbi"
+      ]
+    },
+    {
+      "term_zh": "政府审批路径",
+      "official_term_en": "government route",
+      "synonyms": [
+        "government approval route"
+      ],
+      "domain": [
+        "fema_fdi_rbi"
+      ]
+    },
+    {
+      "term_zh": "下游投资",
+      "official_term_en": "downstream investment",
+      "synonyms": [
+        "indirect foreign investment"
+      ],
+      "domain": [
+        "fema_fdi_rbi"
+      ]
+    },
+    {
+      "term_zh": "股权配发申报",
+      "official_term_en": "Form FC-GPR",
+      "abbreviation": "FC-GPR",
+      "synonyms": [
+        "issue of capital instruments reporting"
+      ],
+      "domain": [
+        "fema_fdi_rbi"
+      ]
+    },
+    {
+      "term_zh": "原因说明通知",
+      "official_term_en": "show cause notice",
+      "abbreviation": "SCN",
+      "synonyms": [
+        "notice to show cause"
+      ],
+      "domain": [
+        "gst",
+        "tax_notice"
+      ]
+    },
+    {
+      "term_zh": "评税年度",
+      "official_term_en": "Assessment Year",
+      "abbreviation": "AY",
+      "synonyms": [],
+      "domain": [
+        "tax_notice"
+      ]
+    },
+    {
+      "term_zh": "财务年度",
+      "official_term_en": "Financial Year",
+      "abbreviation": "FY",
+      "synonyms": [],
+      "domain": [
+        "mca_roc",
+        "gst",
+        "tax_notice"
+      ]
+    },
+    {
+      "term_zh": "受益所有人门槛",
+      "official_term_en": "beneficial owner threshold",
+      "synonyms": [
+        "threshold under Rule 9(3)"
+      ],
+      "domain": [
+        "fema_fdi_rbi"
+      ],
+      "note": "按PML Rules 2005 Rule 9(3)区分主体类型，不得一律答10%。"
+    },
+    {
+      "term_zh": "最终有效控制",
+      "official_term_en": "ultimate effective control",
+      "synonyms": [
+        "control over investee"
+      ],
+      "domain": [
+        "fema_fdi_rbi"
+      ],
+      "note": "para 3.1.1(c)三项标准之一，指向印度被投资企业。"
+    },
+    {
+      "term_zh": "DPIIT申报义务",
+      "official_term_en": "DPIIT reporting requirement",
+      "synonyms": [
+        "reporting under SOP"
+      ],
+      "domain": [
+        "fema_fdi_rbi"
+      ],
+      "note": "para 3.1.1(d)：无需审批但有接壤国持股的投资仍须申报。"
+    },
+    {
+      "term_zh": "州级采纳日期",
+      "official_term_en": "State adoption date of central amendment",
+      "synonyms": [
+        "State Amendment Act effective date"
+      ],
+      "domain": [
+        "gst"
+      ],
+      "note": "适用起点取中央生效日与该辖区采纳日的较晚者。"
+    },
+    {
+      "term_zh": "州内电子路单门槛",
+      "official_term_en": "intra-State e-way bill threshold",
+      "synonyms": [
+        "State e-way bill limit"
+      ],
+      "domain": [
+        "gst"
+      ],
+      "note": "依CGST Rules r138(14)由各辖区自定且会变动，不得写死数字。"
+    },
+    {
+      "term_zh": "预裁定",
+      "official_term_en": "Advance Ruling",
+      "abbreviation": "AAR",
+      "synonyms": [
+        "Authority for Advance Ruling"
+      ],
+      "domain": [
+        "gst",
+        "litigation_cases"
+      ],
+      "note": "只对申请人与该邦管辖官员有约束力，不同邦结论可能相反。"
+    },
+    {
+      "term_zh": "税收协定",
+      "official_term_en": "Double Taxation Avoidance Agreement",
+      "abbreviation": "DTAA",
+      "synonyms": [
+        "tax treaty"
+      ],
+      "domain": [
+        "income_tax_tds_tp"
+      ],
+      "note": "协定优惠不自动适用，须先确认TRC、Form 10F与有无常设机构。"
+    },
+    {
+      "term_zh": "常设机构",
+      "official_term_en": "permanent establishment",
+      "abbreviation": "PE",
+      "synonyms": [
+        "fixed place of business"
+      ],
+      "domain": [
+        "income_tax_tds_tp"
+      ],
+      "note": "协定概念，应引协定条款而非国内法；与GST的place of supply无关。"
+    },
+    {
+      "term_zh": "进项税额抵扣时限",
+      "official_term_en": "time limit for availing input tax credit",
+      "synonyms": [
+        "section 16(4)"
+      ],
+      "domain": [
+        "gst"
+      ],
+      "note": "逾期即丧失抵扣权，与s16(2)的实质条件是两个独立门槛。"
+    },
+    {
+      "term_zh": "进出口商品分类表",
+      "official_term_en": "ITC(HS)",
+      "synonyms": [
+        "Indian Trade Classification (Harmonised System)"
+      ],
+      "domain": [
+        "import_export_customs"
+      ],
+      "note": "用于判断进出口准入，与GST下的HSN编码用途不同。"
+    }
+  ]
+}

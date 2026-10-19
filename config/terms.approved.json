@@ -1,0 +1,937 @@
+{
+  "schema_version": "1.0",
+  "status": "APPROVED_BY_EXPERT",
+  "approved_on": "2026-08-05",
+  "source_workbook": "印度合规助手_中英文检索词典模板_V1.0.xlsx",
+  "terms": [
+    {
+      "term_zh": "货票同行",
+      "aliases_zh": [
+        "货物随票",
+        "随货发票"
+      ],
+      "official_term_en": "movement of goods with tax invoice",
+      "search_terms_en": [
+        "movement of goods with tax invoice",
+        "invoice",
+        "movement of goods",
+        "goods in movement",
+        "transport",
+        "conveyance",
+        "e-way bill",
+        "EWB"
+      ],
+      "domain": [
+        "gst"
+      ],
+      "exclusions": "不能直接把e-way bill等同于发票",
+      "expert_notes": "当前用于广泛检索Section 31、Section 68及相关Rules；请确认业务含义",
+      "source": "当前系统",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "GST",
+      "aliases_zh": [
+        "印度商品和服务税",
+        "增值税",
+        "流转税"
+      ],
+      "official_term_en": "Goods and Services Tax",
+      "search_terms_en": [
+        "Goods and Services Tax",
+        "GST",
+        "CGST",
+        "SGST",
+        "IGST",
+        "UTGST"
+      ],
+      "domain": [
+        "gst"
+      ],
+      "exclusions": "注意CGST、SGST、IGST、UTGST的适用范围",
+      "expert_notes": "用于识别GST领域",
+      "source": "当前系统",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "发票",
+      "aliases_zh": [
+        "税务发票",
+        "税票"
+      ],
+      "official_term_en": "invoice",
+      "search_terms_en": [
+        "invoice",
+        "tax invoice"
+      ],
+      "domain": [
+        "gst"
+      ],
+      "exclusions": "需区分tax invoice、bill of supply与commercial invoice",
+      "expert_notes": "当前检索同invoice与tax invoice",
+      "source": "当前系统",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "货物运输",
+      "aliases_zh": [
+        "货物移动",
+        "在途货物"
+      ],
+      "official_term_en": "movement of goods",
+      "search_terms_en": [
+        "movement of goods",
+        "goods in movement",
+        "transport",
+        "conveyance",
+        "supply of goods"
+      ],
+      "domain": [
+        "gst"
+      ],
+      "exclusions": "不包含纯服务供应",
+      "expert_notes": "用于检索运输及在途检查条款",
+      "source": "当前系统",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "GST登记/注册",
+      "aliases_zh": [
+        "GST注册",
+        "税务登记"
+      ],
+      "official_term_en": "registration",
+      "search_terms_en": [
+        "registration",
+        "registered person",
+        "GSTIN"
+      ],
+      "domain": [
+        "gst"
+      ],
+      "exclusions": "不要与公司注册incorporation混淆",
+      "expert_notes": "问题含GST时优先检索registration；如果用户提问公司注册，则GST登记和公司incorporation都应该告知",
+      "source": "当前系统",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "GST申报/申报表",
+      "aliases_zh": [
+        "纳税申报",
+        "GST申报"
+      ],
+      "official_term_en": "return, fill, filing",
+      "search_terms_en": [
+        "return, fill, filing",
+        "return",
+        "fill",
+        "filing",
+        "furnish return",
+        "GST return",
+        "GST filing"
+      ],
+      "domain": [
+        "gst"
+      ],
+      "exclusions": "需结合具体Form编号",
+      "expert_notes": "当前检索return与furnish return",
+      "source": "当前系统",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "进项税",
+      "aliases_zh": [
+        "进项税额",
+        "进项抵扣"
+      ],
+      "official_term_en": "input tax, inward tax",
+      "search_terms_en": [
+        "input tax, inward tax",
+        "input tax",
+        "inward tax",
+        "input tax credit",
+        "ITC"
+      ],
+      "domain": [
+        "gst"
+      ],
+      "exclusions": "与tax credit note(TCN)含义不同",
+      "expert_notes": "当前同时检索两组词",
+      "source": "当前系统",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "销项税",
+      "aliases_zh": [
+        "销项税额"
+      ],
+      "official_term_en": "output tax, outward tax",
+      "search_terms_en": [
+        "output tax, outward tax",
+        "output tax",
+        "outward tax",
+        "output tax liability"
+      ],
+      "domain": [
+        "gst"
+      ],
+      "exclusions": "区分tax payable与net tax liability",
+      "expert_notes": "当前检索output tax",
+      "source": "当前系统",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "税务通知/罚款/处罚",
+      "aliases_zh": [
+        "税局通知",
+        "罚款通知",
+        "处罚通知"
+      ],
+      "official_term_en": "tax notice and penalty",
+      "search_terms_en": [
+        "tax notice and penalty",
+        "notice",
+        "show cause notice",
+        "penalty"
+      ],
+      "domain": [
+        "tax_notice"
+      ],
+      "exclusions": "广泛类别，必须结合发出机构和Form编号",
+      "expert_notes": "用户未上传Notice时应先追问",
+      "source": "当前系统",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "印度股东",
+      "aliases_zh": [
+        "印度方股东"
+      ],
+      "official_term_en": "Indian shareholder",
+      "search_terms_en": [
+        "Indian shareholder",
+        "resident shareholder"
+      ],
+      "domain": [
+        "company_incorporation"
+      ],
+      "exclusions": "股东国籍与居民身份不一定相同",
+      "expert_notes": "必须根据具体法律语境选词",
+      "source": "当前系统",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "印度居民董事",
+      "aliases_zh": [
+        "本地董事",
+        "居民董事"
+      ],
+      "official_term_en": "resident director",
+      "search_terms_en": [
+        "resident director",
+        "director resident in India"
+      ],
+      "domain": [
+        "mca_roc"
+      ],
+      "exclusions": "不等同于印度籍董事",
+      "expert_notes": "检索Companies Act的resident director要求",
+      "source": "当前系统",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "外国投资者",
+      "aliases_zh": [
+        "境外投资者",
+        "非居民投资者"
+      ],
+      "official_term_en": "foreign investor",
+      "search_terms_en": [
+        "foreign investor",
+        "person resident outside India",
+        "non-resident investor"
+      ],
+      "domain": [
+        "fema_fdi_rbi"
+      ],
+      "exclusions": "需区分法律居民身份与国籍",
+      "expert_notes": "FEMA语境优先使用person resident outside India",
+      "source": "当前系统",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "最终受益所有人",
+      "aliases_zh": [
+        "最终受益人",
+        "实际控制人"
+      ],
+      "official_term_en": "beneficial owner",
+      "search_terms_en": [
+        "beneficial owner",
+        "ultimate beneficial owner",
+        "BO",
+        "UBO"
+      ],
+      "domain": [
+        "company_incorporation"
+      ],
+      "exclusions": "需区分beneficial owner与significant beneficial owner",
+      "expert_notes": "结合公司法与FDI审查语境",
+      "source": "当前系统",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "控制权",
+      "aliases_zh": [
+        "实际控制",
+        "所有权与控制权"
+      ],
+      "official_term_en": "control",
+      "search_terms_en": [
+        "control",
+        "ownership and control"
+      ],
+      "domain": [
+        "fema_fdi_rbi"
+      ],
+      "exclusions": "不宜只根据持股比例判断",
+      "expert_notes": "需核对具体Act或Policy的定义",
+      "source": "当前系统",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "自动路径",
+      "aliases_zh": [
+        "自动通道",
+        "自动批准路径"
+      ],
+      "official_term_en": "automatic route",
+      "search_terms_en": [
+        "automatic route",
+        "automatic approval route"
+      ],
+      "domain": [
+        "fema_fdi_rbi"
+      ],
+      "exclusions": "自动路径仍可能存在条件和申报义务",
+      "expert_notes": "应与government route成对检索",
+      "source": "当前系统",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "政府审批路径",
+      "aliases_zh": [
+        "政府通道",
+        "政府批准路径"
+      ],
+      "official_term_en": "government route",
+      "search_terms_en": [
+        "government route",
+        "government approval route"
+      ],
+      "domain": [
+        "fema_fdi_rbi"
+      ],
+      "exclusions": "需核对当前有权机关及行业限制",
+      "expert_notes": "应与automatic route成对检索",
+      "source": "当前系统",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "下游投资",
+      "aliases_zh": [
+        "间接外国投资"
+      ],
+      "official_term_en": "downstream investment",
+      "search_terms_en": [
+        "downstream investment",
+        "indirect foreign investment"
+      ],
+      "domain": [
+        "fema_fdi_rbi"
+      ],
+      "exclusions": "不等同于普通境内子公司投资",
+      "expert_notes": "检索所有权与控制权条件",
+      "source": "当前系统",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "股权配发申报",
+      "aliases_zh": [
+        "外资股权配发申报"
+      ],
+      "official_term_en": "Form FC-GPR",
+      "search_terms_en": [
+        "Form FC-GPR",
+        "issue of capital instruments reporting",
+        "FC-GPR"
+      ],
+      "domain": [
+        "fema_fdi_rbi"
+      ],
+      "exclusions": "不要与FC-TRS混淆",
+      "expert_notes": "检索RBI reporting及期限",
+      "source": "当前系统",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "原因说明通知",
+      "aliases_zh": [
+        "说明原因通知",
+        "陈述理由通知"
+      ],
+      "official_term_en": "show cause notice",
+      "search_terms_en": [
+        "show cause notice",
+        "notice to show cause",
+        "SCN"
+      ],
+      "domain": [
+        "tax_notice"
+      ],
+      "exclusions": "需识别发出机构、法条和回复期限",
+      "expert_notes": "上传文件时应优先提取编号和日期",
+      "source": "当前系统",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "评税年度",
+      "aliases_zh": [
+        "纳税评估年度"
+      ],
+      "official_term_en": "Assessment Year",
+      "search_terms_en": [
+        "Assessment Year",
+        "AY"
+      ],
+      "domain": [
+        "tax_notice"
+      ],
+      "exclusions": "不要与Financial Year混淆",
+      "expert_notes": "保留具体年份，如AY 2025-26",
+      "source": "当前系统",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "财务年度",
+      "aliases_zh": [
+        "会计年度",
+        "财年"
+      ],
+      "official_term_en": "Financial Year",
+      "search_terms_en": [
+        "Financial Year",
+        "FY"
+      ],
+      "domain": [
+        "common"
+      ],
+      "exclusions": "不要与Assessment Year混淆",
+      "expert_notes": "保留具体年份，如FY 2024-25",
+      "source": "当前系统",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "电子运单",
+      "aliases_zh": [
+        "电子运输单",
+        "电子运货单"
+      ],
+      "official_term_en": "e-way bill",
+      "search_terms_en": [
+        "e-way bill",
+        "electronic way bill",
+        "EWB"
+      ],
+      "domain": [
+        "gst"
+      ],
+      "exclusions": "不等同于tax invoice",
+      "expert_notes": "建议同时检索CGST Rules Rule 138",
+      "source": "建议补充",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "税务发票开具",
+      "aliases_zh": [
+        "开票",
+        "出具税务发票"
+      ],
+      "official_term_en": "issue of tax invoice",
+      "search_terms_en": [
+        "issue of tax invoice",
+        "issuance of tax invoice",
+        "TCN",
+        "TDN",
+        "TI"
+      ],
+      "domain": [
+        "gst"
+      ],
+      "exclusions": "需区分货物与服务的开票时点",
+      "expert_notes": "建议检索CGST Act Section 31及相关Rules",
+      "source": "建议补充",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "供应票据",
+      "aliases_zh": [
+        "供应凭证"
+      ],
+      "official_term_en": "bill of supply",
+      "search_terms_en": [
+        "bill of supply"
+      ],
+      "domain": [
+        "gst"
+      ],
+      "exclusions": "不等同于tax invoice",
+      "expert_notes": "适用场景需由专家确认",
+      "source": "建议补充",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "在途货物检查",
+      "aliases_zh": [
+        "运输中货物检查"
+      ],
+      "official_term_en": "inspection of goods in movement",
+      "search_terms_en": [
+        "inspection of goods in movement",
+        "goods in transit inspection"
+      ],
+      "domain": [
+        "gst"
+      ],
+      "exclusions": "区分inspection与detention/seizure",
+      "expert_notes": "建议检索CGST Act Section 68",
+      "source": "建议补充",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "扣押、查封与放行",
+      "aliases_zh": [
+        "扣货",
+        "扣车",
+        "放行货物"
+      ],
+      "official_term_en": "detention, seizure and release",
+      "search_terms_en": [
+        "detention, seizure and release",
+        "detention",
+        "seizure and release",
+        "detention of goods and conveyance",
+        "release of goods"
+      ],
+      "domain": [
+        "gst"
+      ],
+      "exclusions": "需区分Section 129与其他查封程序",
+      "expert_notes": "建议检索货物与运输工具处置",
+      "source": "建议补充",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "进项税抵扣",
+      "aliases_zh": [
+        "ITC抵扣条件"
+      ],
+      "official_term_en": "eligibility for input tax credit",
+      "search_terms_en": [
+        "eligibility for input tax credit",
+        "conditions for taking input tax credit",
+        "ITC"
+      ],
+      "domain": [
+        "gst"
+      ],
+      "exclusions": "不宜只检索发票，还需检索其他条件",
+      "expert_notes": "建议检索CGST Act Section 16",
+      "source": "建议补充",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "反向收费机制",
+      "aliases_zh": [
+        "反向纳税",
+        "反向收费"
+      ],
+      "official_term_en": "reverse charge mechanism",
+      "search_terms_en": [
+        "reverse charge mechanism",
+        "tax payable under reverse charge",
+        "RCM"
+      ],
+      "domain": [
+        "gst"
+      ],
+      "exclusions": "需区分通知指定情形",
+      "expert_notes": "建议同时检索Act与Notification",
+      "source": "建议补充",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "供应时间",
+      "aliases_zh": [
+        "纳税义务发生时间"
+      ],
+      "official_term_en": "time of supply",
+      "search_terms_en": [
+        "time of supply"
+      ],
+      "domain": [
+        "gst"
+      ],
+      "exclusions": "需区分货物、服务及RCM",
+      "expert_notes": "建议保留问题中的日期事实",
+      "source": "建议补充",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "供应地点",
+      "aliases_zh": [
+        "纳税地点"
+      ],
+      "official_term_en": "place of supply",
+      "search_terms_en": [
+        "place of supply"
+      ],
+      "domain": [
+        "gst"
+      ],
+      "exclusions": "通常需结合IGST Act",
+      "expert_notes": "",
+      "source": "建议补充",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "销售",
+      "aliases_zh": [
+        "销售供应"
+      ],
+      "official_term_en": "outward supply",
+      "search_terms_en": [
+        "outward supply",
+        "details of outward supplies"
+      ],
+      "domain": [
+        "gst"
+      ],
+      "exclusions": "",
+      "expert_notes": "可与GSTR-1联合检索",
+      "source": "建议补充",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "采购",
+      "aliases_zh": [
+        "采购供应"
+      ],
+      "official_term_en": "inward supply",
+      "search_terms_en": [
+        "inward supply",
+        "receipt of goods or services"
+      ],
+      "domain": [
+        "gst"
+      ],
+      "exclusions": "",
+      "expert_notes": "可与ITC及reverse charge联合检索",
+      "source": "建议补充",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "销售申报",
+      "aliases_zh": [
+        "GSTR-1申报"
+      ],
+      "official_term_en": "Form GSTR-1",
+      "search_terms_en": [
+        "Form GSTR-1",
+        "statement of outward supplies",
+        "GSTR-1"
+      ],
+      "domain": [
+        "gst"
+      ],
+      "exclusions": "需与GSTR-3B区分",
+      "expert_notes": "表单口径和期限应以当期官方规则为准",
+      "source": "建议补充",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "GST汇总申报",
+      "aliases_zh": [
+        "GSTR-3B申报"
+      ],
+      "official_term_en": "Form GSTR-3B",
+      "search_terms_en": [
+        "Form GSTR-3B",
+        "summary return",
+        "GSTR-3B"
+      ],
+      "domain": [
+        "gst"
+      ],
+      "exclusions": "需与GSTR-1区分",
+      "expert_notes": "表单口径和期限应以当期官方规则为准",
+      "source": "建议补充",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "私人有限公司",
+      "aliases_zh": [
+        "印度私人有限公司"
+      ],
+      "official_term_en": "private limited company",
+      "search_terms_en": [
+        "private limited company",
+        "company limited by shares",
+        "Pvt Ltd"
+      ],
+      "domain": [
+        "company_incorporation"
+      ],
+      "exclusions": "需区分public company与LLP",
+      "expert_notes": "用于公司设立主体类型识别",
+      "source": "建议补充",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "公司注册设立",
+      "aliases_zh": [
+        "设立印度公司",
+        "注册公司"
+      ],
+      "official_term_en": "incorporation of company",
+      "search_terms_en": [
+        "incorporation of company",
+        "company incorporation"
+      ],
+      "domain": [
+        "company_incorporation"
+      ],
+      "exclusions": "不要与GST registration混淆",
+      "expert_notes": "检索Companies Act及MCA incorporation forms",
+      "source": "建议补充",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "董事识别号",
+      "aliases_zh": [
+        "董事编号"
+      ],
+      "official_term_en": "Director Identification Number",
+      "search_terms_en": [
+        "Director Identification Number",
+        "director identification number allotment",
+        "DIN"
+      ],
+      "domain": [
+        "mca_roc"
+      ],
+      "exclusions": "不要与公司CIN混淆",
+      "expert_notes": "检索DIN申请、更新及停用",
+      "source": "建议补充",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "显著受益所有人",
+      "aliases_zh": [
+        "重要受益所有人"
+      ],
+      "official_term_en": "significant beneficial owner",
+      "search_terms_en": [
+        "significant beneficial owner",
+        "significant beneficial ownership",
+        "SBO"
+      ],
+      "domain": [
+        "mca_roc"
+      ],
+      "exclusions": "需与beneficial owner/UBO区分",
+      "expert_notes": "建议检索SBO Rules与BEN forms",
+      "source": "建议补充",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "年度申报",
+      "aliases_zh": [
+        "ROC年报",
+        "年审申报"
+      ],
+      "official_term_en": "annual filing",
+      "search_terms_en": [
+        "annual filing",
+        "annual return filing",
+        "filing with Registrar",
+        "GSTR-9",
+        "income tax return"
+      ],
+      "domain": [
+        "mca_roc"
+      ],
+      "exclusions": "需分解为财务报表与年度返还表单",
+      "expert_notes": "建议与AOC-4、MGT-7/MGT-7A联合检索；需要包含GSTR-9和所得税年度申报",
+      "source": "建议补充",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "财务报表申报",
+      "aliases_zh": [
+        "AOC-4申报"
+      ],
+      "official_term_en": "Form AOC-4",
+      "search_terms_en": [
+        "Form AOC-4",
+        "filing of financial statements",
+        "AOC-4"
+      ],
+      "domain": [
+        "mca_roc"
+      ],
+      "exclusions": "需核对主体和具体表单变体",
+      "expert_notes": "期限与适用表单需按当期MCA规则确认",
+      "source": "建议补充",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "年度返还申报",
+      "aliases_zh": [
+        "MGT-7申报"
+      ],
+      "official_term_en": "Form MGT-7",
+      "search_terms_en": [
+        "Form MGT-7",
+        "annual return",
+        "MGT-7",
+        "MGT-7A"
+      ],
+      "domain": [
+        "mca_roc"
+      ],
+      "exclusions": "需核对MGT-7与MGT-7A适用主体",
+      "expert_notes": "期限与适用表单需按当期MCA规则确认",
+      "source": "建议补充",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "股份转让申报",
+      "aliases_zh": [
+        "外资股份转让申报"
+      ],
+      "official_term_en": "Form FC-TRS",
+      "search_terms_en": [
+        "Form FC-TRS",
+        "transfer of capital instruments reporting",
+        "FC-TRS"
+      ],
+      "domain": [
+        "fema_fdi_rbi"
+      ],
+      "exclusions": "不要与FC-GPR混淆",
+      "expert_notes": "检索RBI reporting、定价及期限",
+      "source": "建议补充",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "定价指引",
+      "aliases_zh": [
+        "外资定价规则"
+      ],
+      "official_term_en": "pricing guidelines",
+      "search_terms_en": [
+        "pricing guidelines",
+        "valuation norms",
+        "pricing norms"
+      ],
+      "domain": [
+        "fema_fdi_rbi"
+      ],
+      "exclusions": "需区分发行和转让场景",
+      "expert_notes": "检索时应带入交易方居民身份",
+      "source": "建议补充",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "外部商业借款",
+      "aliases_zh": [
+        "境外商业借款"
+      ],
+      "official_term_en": "external commercial borrowing",
+      "search_terms_en": [
+        "external commercial borrowing",
+        "overseas borrowing",
+        "ECB"
+      ],
+      "domain": [
+        "fema_fdi_rbi"
+      ],
+      "exclusions": "不是任何境外借款都适用同一路径",
+      "expert_notes": "检索借款人、贷款人、用途和期限",
+      "source": "建议补充",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "预扣税",
+      "aliases_zh": [
+        "源泉扣缴税",
+        "代扣代缴"
+      ],
+      "official_term_en": "tax deducted at source",
+      "search_terms_en": [
+        "tax deducted at source",
+        "withholding tax",
+        "TDS"
+      ],
+      "domain": [
+        "tax_notice"
+      ],
+      "exclusions": "",
+      "expert_notes": "需带入付款性质、收款人身份和条款",
+      "source": "建议补充",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "转让定价",
+      "aliases_zh": [
+        "关联交易定价"
+      ],
+      "official_term_en": "transfer pricing",
+      "search_terms_en": [
+        "transfer pricing",
+        "arm's length price",
+        "international transaction",
+        "TP",
+        "ALP"
+      ],
+      "domain": [
+        "tax_notice"
+      ],
+      "exclusions": "不要与FEMA pricing guidelines混淆",
+      "expert_notes": "检索关联关系、国际交易与同期资料",
+      "source": "建议补充",
+      "status": "APPROVED"
+    },
+    {
+      "term_zh": "回复期限",
+      "aliases_zh": [
+        "答复截止日期",
+        "回应期限"
+      ],
+      "official_term_en": "time limit for response",
+      "search_terms_en": [
+        "time limit for response",
+        "due date for reply",
+        "response deadline"
+      ],
+      "domain": [
+        "tax_notice"
+      ],
+      "exclusions": "必须以Notice原文和送达日期为准",
+      "expert_notes": "AI只能建议日期，用户确认后才创建提醒",
+      "source": "建议补充",
+      "status": "APPROVED"
+    }
+  ]
+}

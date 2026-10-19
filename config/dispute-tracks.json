@@ -1,0 +1,680 @@
+{
+  "schema_version": "1.0",
+  "_说明": [
+    "争议应对型问题的**审级骨架**。三个税种各一条。",
+    "",
+    "## 为什么这是配置文件而不是让模型生成",
+    "",
+    "审级顺序、期限、规费、预缴比例这些东西一年变不了一次，但模型每次都会重新生成一遍——",
+    "于是就会重演已经修过的那几类错：编数字、用被取代的旧值、漏掉分支。",
+    "和通知索引（notification-index.json）、多义词表（term-readings.json）同一个模式：",
+    "**变化慢的结构化数据放配置，模型只做映射**。",
+    "",
+    "模型在争议应对型答案里的活只剩三件：判断走哪条分支、把用户的具体金额代进去、写结论。",
+    "法定数字不经过它的手。",
+    "",
+    "## 每个 cell 的 basis 只有两种，必须如实标",
+    "",
+    "  STATUTE          有条文。citation 指向法规名 + 条号，渲染时去知识库取原文挂角标。",
+    "  PRACTICE_ESTIMATE 无条文的实务估计（主要是平均耗时）。展示层必须和 STATUTE 视觉上分开，",
+    "                    并显式写「无条文」。这是这个产品最要紧的一条纪律：",
+    "                    有出处的和没出处的不能长得一样。",
+    "",
+    "## 所得税为什么是双条号",
+    "",
+    "Income-tax Act, 2025 自 2026-04-01 施行，**条号整个重排了**（700+ 条并成 536 条）。",
+    "FY2026-27 及以后用 2025 法，更早的年度仍用 1961 法。所以每个 cell 的 citation 有两套，",
+    "按 `applicable_from` / `applicable_to` 选。这和 law-supersession.ts 在文件级做的事是一回事，",
+    "只是这里精确到条号。",
+    "",
+    "## 核对记录（2026-09-29）",
+    "",
+    "所得税：逐条核自 txt/The Income-tax Act, 2025_for_kb.txt（644 chunk，官方原文）",
+    "GST：  逐条核自 A01_Central_Goods_and_Services_Tax_Act_2017_for_kb.txt（ICAI IDTC 版）",
+    "海关： 逐条核自 01_Customs_Act_1962_for_kb.txt",
+    "耗时项一律没有核对来源——它们本来就没有条文。"
+  ],
+  "tracks": [
+    {
+      "id": "income_tax",
+      "domain": "income_tax",
+      "label": "所得税",
+      "running_cost": {
+        "interest": {
+          "label": "欠税利息",
+          "value": "单利 1% / 月",
+          "basis": "STATUTE",
+          "citation": {
+            "act_2025": "Income-tax Act, 2025 s.411(3)(a)",
+            "act_1961": "Income-tax Act, 1961 s.220(2)"
+          },
+          "note": "原文 simple interest at 1% for every month or part of a month。两个细节：是**单利不复利**（三年 36%，不是 43%）；**不足一个月按一个月算**，13 个月零 1 天算 14 个月。起算日为缴款期限届满次日，截止日为实际缴清当日。",
+          "carve_out": "s.411(3)(b)：就 s.439 罚款产生的欠款，在一审裁定（s.359）和 ITAT 裁定（s.363）作出之日前**不计息**。说「利息按月累计」时必须带上这个例外，否则会把罚款那块的利息也算进去——而罚款常常是争议金额里最大的一块。"
+        },
+        "default_penalty": {
+          "label": "欠税罚款",
+          "value": "金额由评税官裁量",
+          "basis": "STATUTE",
+          "citation": {
+            "act_2025": "Income-tax Act, 2025 s.412",
+            "act_1961": "Income-tax Act, 1961 s.221"
+          },
+          "note": "英文是 penalty payable when tax in default。在欠款和 s.411(3) 利息**之外**另行加收，针对的是「逾期不缴」这个行为本身，和下面按情节分级的所得类罚款是两回事。"
+        },
+        "penalty_scale": {
+          "label": "所得类罚款：按情节分级",
+          "value": "50% – 200%",
+          "basis": "STATUTE",
+          "citation": {
+            "act_2025": "Income-tax Act, 2025 s.439",
+            "act_1961": "Income-tax Act, 1961 s.270A"
+          },
+          "note": "计罚基数都是**少报所得对应的应纳税额**，不是少报的所得额本身。两档之间差 4 倍，所以「是少报还是错报」往往是争议里最值钱的一个争点。",
+          "scale": [
+            {
+              "level": "少报所得（under-reporting）",
+              "rate": "50%",
+              "cite": "s.439(9)",
+              "note": "一般情形。申报所得低于核定所得即构成。"
+            },
+            {
+              "level": "错报所得（misreporting）",
+              "rate": "200%",
+              "cite": "s.439(10)",
+              "note": "少报是由错报造成的，适用这一档，且**优先于 50% 那档**。"
+            },
+            {
+              "level": "转让定价文档未备妥",
+              "rate": "每笔交易金额的 2%",
+              "cite": "s.442",
+              "note": "按**交易金额**算，不是按税额——金额可能远超所得类罚款。"
+            },
+            {
+              "level": "账簿虚假或遗漏分录",
+              "rate": "等于该分录金额",
+              "cite": "s.444",
+              "note": "同样按金额算。"
+            }
+          ],
+          "misreporting_cases": {
+            "label": "构成「错报」的七种情形（s.439(11)）",
+            "items": [
+              "(a) 虚假陈述或隐瞒事实",
+              "(b) 投资未入账",
+              "(c) 申报的支出无任何凭证支持",
+              "(d) 账簿中记载虚假分录",
+              "(e) 影响总所得的收入未入账",
+              "(f) 未申报国际交易或特定境内交易（Chapter X）",
+              "(g) s.195(1)(b) 项下的所得"
+            ]
+          },
+          "waiver": {
+            "label": "减免路径（s.440）",
+            "text": "可向评税官申请免除 s.439 罚款并免予追诉，条件是：①评估／重评估令确定的税款和利息已在缴款通知期限内缴清；②属 (a)–(f) 情形的，另缴相当于少报所得应纳税额 **100%** 的附加所得税以替代罚款；属 (g) 情形的，另缴 **120%**。",
+            "cite": "Income-tax Act, 2025 s.440"
+          }
+        }
+      },
+      "branch_question": "是否为 eligible assessee（外国公司 / 涉转让定价调整）？",
+      "branches": [
+        {
+          "id": "drp",
+          "when": "是",
+          "label": "走 DRP（争议解决小组）",
+          "stages": [
+            {
+              "id": "drp",
+              "label": "争议解决小组 DRP",
+              "citation": {
+                "act_2025": "Income-tax Act, 2025 s.275",
+                "act_1961": "Income-tax Act, 1961 s.144C"
+              },
+              "cells": [
+                {
+                  "key": "提异议期限",
+                  "value": "30 天",
+                  "basis": "STATUTE",
+                  "note": "自草案令送达起"
+                },
+                {
+                  "key": "进场现金",
+                  "value": "无",
+                  "basis": "STATUTE",
+                  "note": "草案阶段不需缴款"
+                },
+                {
+                  "key": "DRP 出指令",
+                  "value": "9 个月",
+                  "basis": "STATUTE",
+                  "note": "自草案令送达当月月末起"
+                },
+                {
+                  "key": "最终令",
+                  "value": "1 个月",
+                  "basis": "STATUTE",
+                  "note": "自收到指令当月月末起"
+                },
+                {
+                  "key": "实际耗时",
+                  "value": "约 1 年",
+                  "basis": "PRACTICE_ESTIMATE"
+                }
+              ],
+              "next": "itat"
+            }
+          ]
+        },
+        {
+          "id": "cita",
+          "when": "否",
+          "label": "走 JCIT(A) / CIT(A)",
+          "stages": [
+            {
+              "id": "first_appeal",
+              "label": "联合专员（上诉）JCIT(A) 或 所得税专员（上诉）CIT(A)",
+              "citation": {
+                "act_2025": "Income-tax Act, 2025 s.356 / s.357 / s.358",
+                "act_1961": "Income-tax Act, 1961 s.246A / s.249"
+              },
+              "note": "⚠2025 法把一审拆成**两个机关**：s.356（JCIT(A)）和 s.357（CIT(A)）可上诉的裁定类型不同，按裁定类型选。",
+              "cells": [
+                {
+                  "key": "上诉期限",
+                  "value": "30 天",
+                  "basis": "STATUTE",
+                  "note": "涉评估或罚款的，自缴款通知送达起；其他自裁定送达起。s.358(3)"
+                },
+                {
+                  "key": "规费",
+                  "value": "₹250 / ₹500 / ₹1,000",
+                  "basis": "STATUTE",
+                  "note": "按评税官核定的总所得分档：≤₹10万 / ₹10万–20万 / >₹20万。s.358(2)"
+                },
+                {
+                  "key": "受理前置条件",
+                  "value": "已申报税款须缴清",
+                  "basis": "STATUTE",
+                  "note": "s.358(6)。这是一笔**必然发生**的现金流出，不是或有。"
+                },
+                {
+                  "key": "暂缓征收要掏",
+                  "value": "争议税款的 20%",
+                  "basis": "STATUTE",
+                  "citation_override": "CBDT Office Memorandum F.No.404/72/93-ITCC",
+                  "hierarchy": "CIRCULAR",
+                  "note": "⚠出自 CBDT 行政备忘录，**不是法条**——只约束税务官、不约束法院，可以争取降低。原为 15%，2017-07-31 起改为 20%。"
+                },
+                {
+                  "key": "平均耗时",
+                  "value": "1–3 年",
+                  "basis": "PRACTICE_ESTIMATE",
+                  "note": "各地积案差异很大"
+                }
+              ],
+              "next": "itat"
+            }
+          ]
+        }
+      ],
+      "stages": [
+        {
+          "id": "start",
+          "label": "评估令 + 缴款通知",
+          "citation": {
+            "act_2025": "Income-tax Act, 2025 s.289",
+            "act_1961": "Income-tax Act, 1961 s.156"
+          },
+          "note": "⚠这是整条流程的计价起点。下面所有期限都从缴款通知送达起算。",
+          "cells": [
+            {
+              "key": "缴款期限",
+              "value": "30 天",
+              "basis": "STATUTE",
+              "citation_override": "Income-tax Act, 2025 s.411",
+              "note": "自缴款通知送达起。⚠税局有理由认为迟延损害税收时，可经 Joint Commissioner 批准**缩短**到 30 天以内——不能假定一定有 30 天。"
+            },
+            {
+              "key": "不上诉要掏",
+              "value": "100%",
+              "basis": "STATUTE",
+              "note": "全额税款 + 利息 + 罚款。这是「不打」那条路的成本基线。"
+            },
+            {
+              "key": "决策窗口",
+              "value": "就是这 30 天",
+              "basis": "STATUTE",
+              "note": "逾期未缴即成欠税，开始计息并可能被加罚。"
+            },
+            {
+              "key": "逾期后果",
+              "value": "计息 + 可另加罚",
+              "basis": "STATUTE",
+              "citation_override": "Income-tax Act, 2025 s.412",
+              "note": "欠税罚在欠款和利息**之外**另行加收，金额由评税官裁量。"
+            }
+          ],
+          "next": "__branch__"
+        },
+        {
+          "id": "itat",
+          "label": "所得税上诉法庭 ITAT",
+          "citation": {
+            "act_2025": "Income-tax Act, 2025 s.362",
+            "act_1961": "Income-tax Act, 1961 s.253"
+          },
+          "cells": [
+            {
+              "key": "上诉期限",
+              "value": "2 个月",
+              "basis": "STATUTE",
+              "note": "⚠**自裁定送达当月月末起算**，不是自送达日起算。月初收到实际有近 3 个月，月底收到只有 2 个月。s.362(3)"
+            },
+            {
+              "key": "规费",
+              "value": "₹500 / ₹1,500 / 1%（上限 ₹10,000）",
+              "basis": "STATUTE",
+              "note": "≤₹10万 / ₹10万–20万 / >₹20万 按核定所得的 1%，封顶 ₹10,000"
+            },
+            {
+              "key": "追加预缴",
+              "value": "无法定强制",
+              "basis": "STATUTE",
+              "note": "可单独申请暂缓征收"
+            },
+            {
+              "key": "平均耗时",
+              "value": "1–3 年",
+              "basis": "PRACTICE_ESTIMATE",
+              "note": "排期长，是时间成本主要来源"
+            }
+          ],
+          "next": "high_court"
+        },
+        {
+          "id": "high_court",
+          "label": "高等法院",
+          "citation": {
+            "act_2025": "Income-tax Act, 2025 s.365",
+            "act_1961": "Income-tax Act, 1961 s.260A"
+          },
+          "cells": [
+            {
+              "key": "上诉期限",
+              "value": "120 天",
+              "basis": "STATUTE",
+              "note": "自收到 ITAT 裁定起。s.365(2)(a)"
+            },
+            {
+              "key": "受理门槛",
+              "value": "须涉 substantial question of law",
+              "basis": "STATUTE",
+              "note": "事实认定不可再争"
+            },
+            {
+              "key": "⚠暂缓征收失效",
+              "value": "税款照缴",
+              "basis": "STATUTE",
+              "citation_override": "Income-tax Act, 2025 s.369",
+              "note": "⚠**上诉到高等法院或最高法院，不停止缴税义务**——税款仍按评估结果缴纳。走到这一级，前面争到的暂缓保护没了。这一条直接影响「要不要往上打」。"
+            },
+            {
+              "key": "出庭费用",
+              "value": "显著上升",
+              "basis": "PRACTICE_ESTIMATE",
+              "note": "Senior Counsel 按次计费"
+            },
+            {
+              "key": "平均耗时",
+              "value": "2–5 年",
+              "basis": "PRACTICE_ESTIMATE"
+            }
+          ],
+          "next": "supreme_court"
+        },
+        {
+          "id": "supreme_court",
+          "label": "最高法院",
+          "citation": {
+            "act_2025": "Income-tax Act, 2025 s.367",
+            "act_1961": "Income-tax Act, 1961 s.261"
+          },
+          "cells": [
+            {
+              "key": "受理条件",
+              "value": "须高等法院出具 fit for appeal 证明",
+              "basis": "STATUTE",
+              "note": "不是当然受理。s.367"
+            },
+            {
+              "key": "暂缓征收",
+              "value": "同样不停止缴税",
+              "basis": "STATUTE",
+              "citation_override": "Income-tax Act, 2025 s.369"
+            },
+            {
+              "key": "平均耗时",
+              "value": "3 年以上",
+              "basis": "PRACTICE_ESTIMATE",
+              "note": "多数争议不会走到这一级"
+            }
+          ],
+          "next": null
+        }
+      ]
+    },
+    {
+      "id": "gst",
+      "domain": "gst",
+      "label": "GST",
+      "running_cost": {
+        "interest": {
+          "label": "迟延缴税利息",
+          "value": "年利率上限 18%",
+          "basis": "STATUTE",
+          "citation": "CGST Act, 2017 s.50(1)",
+          "note": "⚠条文写的是「not exceeding eighteen per cent, as may be notified」——**18% 是法定上限，实际税率由通知设定**。答案里要说清这个区别。错误抵扣进项的上限是 24%（s.50(3)）。"
+        },
+        "voluntary_penalty": {
+          "label": "收到通知前主动缴纳的罚款",
+          "value": "税款的 15%",
+          "basis": "STATUTE",
+          "citation": "CGST Act, 2017 s.74A",
+          "note": "在收到正式通知**之前**自行补缴的，罚款比例大幅降低。这是一条实务上很值钱的减损路径。"
+        }
+      },
+      "stages": [
+        {
+          "id": "start",
+          "label": "Show Cause Notice + 裁定",
+          "citation": "CGST Act, 2017 s.74A",
+          "note": "FY2023-24 及以前的期间走 s.73（非欺诈）/ s.74（涉欺诈）。",
+          "cells": [
+            {
+              "key": "回复期限",
+              "value": "通知载明",
+              "basis": "STATUTE",
+              "note": "以 Notice 原文为准，不要按通用天数推算。"
+            },
+            {
+              "key": "追征时效",
+              "value": "42 个月",
+              "basis": "STATUTE",
+              "citation_override": "CGST Act, 2017 s.74A",
+              "note": "FY2024-25 及以后；自该财年年度申报到期日起算。⚠条文标题明写「pertaining to the period upto FY2023-24」——**按财年划分，不是按日期一刀切**。"
+            },
+            {
+              "key": "FY2023-24 及以前",
+              "value": "3 年 / 5 年",
+              "basis": "STATUTE",
+              "citation_override": "CGST Act, 2017 s.73 / s.74",
+              "note": "非欺诈 3 年；涉欺诈、故意虚假陈述、隐瞒事实 5 年。"
+            },
+            {
+              "key": "通知前主动补缴",
+              "value": "罚款降至 15%",
+              "basis": "STATUTE",
+              "citation_override": "CGST Act, 2017 s.74A",
+              "note": "在收到正式通知**之前**自行补缴税款 + 利息，罚款比例大幅降低。实务上很值钱的减损路径。"
+            }
+          ],
+          "next": "first_appeal"
+        },
+        {
+          "id": "first_appeal",
+          "label": "一审上诉机关 Appellate Authority",
+          "citation": "CGST Act, 2017 s.107",
+          "cells": [
+            {
+              "key": "上诉期限",
+              "value": "3 个月",
+              "basis": "STATUTE",
+              "note": "自裁定送达起；有正当理由可再延 **1 个月**。s.107(1)(4)"
+            },
+            {
+              "key": "已承认部分",
+              "value": "须全额缴清",
+              "basis": "STATUTE",
+              "note": "s.107(6)(a)。⚠这是一笔**必然发生**的现金流出，很容易被漏算。"
+            },
+            {
+              "key": "强制预缴",
+              "value": "争议税额的 10%，上限 ₹20 crore",
+              "basis": "STATUTE",
+              "note": "s.107(6)(b)。**按「剩余争议税额」计**，不是按总额。与所得税不同，这是**法条强制**，法院也受约束。"
+            },
+            {
+              "key": "只罚款不涉税的裁定",
+              "value": "预缴罚款的 10%",
+              "basis": "STATUTE",
+              "note": "s.107(6) 但书：裁定**只要求罚款、不涉补税**的（如 s.122 / s.125 罚款令），上诉前预缴该罚款金额的 **10%** 即可，不适用 (b) 项「争议税额的 10%」，也没有可全额缴清的「已承认税款」。⚠该但书由 Finance Act, 2025 第 129 条替换，自 2025-10-01 生效——生效前原但书只对 s.129(3) 的裁定要求 25% 罚款预缴，对其他纯罚款裁定（如 s.122(1A)）没有比例预缴要求；对 2025-10-01 前已立案争议能否溯及适用，实务上尚有争议。缴足后依 s.107(7)，其余金额的追收视为自动暂缓。"
+            },
+            {
+              "key": "平均耗时",
+              "value": "1–2 年",
+              "basis": "PRACTICE_ESTIMATE"
+            }
+          ],
+          "next": "gstat"
+        },
+        {
+          "id": "gstat",
+          "label": "GST 上诉法庭 GSTAT",
+          "citation": "CGST Act, 2017 s.112",
+          "cells": [
+            {
+              "key": "上诉期限",
+              "value": "3 个月",
+              "basis": "STATUTE",
+              "note": "自一审裁定送达起，或政府通知的日期（以较晚者为准）。s.112(1)"
+            },
+            {
+              "key": "追加预缴",
+              "value": "再 10%，上限 ₹20 crore",
+              "basis": "STATUTE",
+              "note": "s.112(8)(b) 明写 **in addition to** s.107(6) 已缴的部分——**是累加，不是替换**。走到这一级累计占用 20%。"
+            },
+            {
+              "key": "已承认部分",
+              "value": "须全额缴清",
+              "basis": "STATUTE",
+              "note": "s.112(8)(a)"
+            },
+            {
+              "key": "平均耗时",
+              "value": "无历史数据",
+              "basis": "PRACTICE_ESTIMATE",
+              "note": "⚠GSTAT 2026 年才正式开庭，没有排期历史可参考。不要编一个数。"
+            }
+          ],
+          "next": "high_court"
+        },
+        {
+          "id": "high_court",
+          "label": "高等法院 → 最高法院",
+          "citation": "CGST Act, 2017 s.117 / s.118",
+          "cells": [
+            {
+              "key": "分流规则",
+              "value": "涉税率与供应地的直接上最高法院",
+              "basis": "STATUTE",
+              "note": "不经高等法院。s.118"
+            },
+            {
+              "key": "平均耗时",
+              "value": "2–5 年",
+              "basis": "PRACTICE_ESTIMATE"
+            }
+          ],
+          "next": null
+        }
+      ]
+    },
+    {
+      "id": "trade_customs",
+      "domain": "trade_customs",
+      "label": "海关",
+      "running_cost": {
+        "interest": {
+          "label": "欠税利息",
+          "value": "由通知设定",
+          "basis": "STATUTE",
+          "citation": "Customs Act, 1962 s.28AA",
+          "note": "⚠条文本身不写死利率，由政府通知设定。**不要在答案里写一个固定的百分比**，除非知识库里有对应的通知。"
+        },
+        "voluntary_penalty": {
+          "label": "收到通知后 30 天内主动缴纳",
+          "value": "税款的 15%",
+          "basis": "STATUTE",
+          "citation": "Customs Act, 1962 s.28(5)",
+          "note": "涉隐瞒情形下，30 天内补缴税款+利息+15% 罚款可了结。"
+        },
+        "goods_holding": {
+          "label": "货物滞留成本",
+          "value": "按天累计",
+          "basis": "PRACTICE_ESTIMATE",
+          "note": "⚠海关独有。滞港费、仓储费、资金占用**和税额无关**——一批低货值的货，滞留成本可能远超争议税款。这一项在所得税和 GST 里不存在，常常是「先缴了放行、再慢慢争」的决定性因素。"
+        }
+      },
+      "stages": [
+        {
+          "id": "start",
+          "label": "Show Cause Notice + 原审裁定",
+          "citation": "Customs Act, 1962 s.28",
+          "cells": [
+            {
+              "key": "回复期限",
+              "value": "通知载明",
+              "basis": "STATUTE",
+              "note": "以 Notice 原文为准。"
+            },
+            {
+              "key": "追征时效",
+              "value": "2 年 / 5 年",
+              "basis": "STATUTE",
+              "note": "一般情形 2 年（s.28(1)(a)）；涉串通、故意虚假陈述、隐瞒事实 5 年（s.28(4)）。自 relevant date 起算。"
+            },
+            {
+              "key": "30 天内主动缴纳",
+              "value": "罚款 15%",
+              "basis": "STATUTE",
+              "citation_override": "Customs Act, 1962 s.28",
+              "note": "涉隐瞒情形下，收到通知 30 天内补缴税款 + 利息 + 15% 罚款可了结。"
+            },
+            {
+              "key": "货物状态",
+              "value": "可能被扣押",
+              "basis": "STATUTE",
+              "note": "⚠滞港费、仓储费按天累计且**和税额无关**。低货值的货，滞留成本可能远超争议税款。"
+            }
+          ],
+          "next": "commissioner_appeals"
+        },
+        {
+          "id": "commissioner_appeals",
+          "label": "专员（上诉）Commissioner (Appeals)",
+          "citation": "Customs Act, 1962 s.128",
+          "cells": [
+            {
+              "key": "上诉期限",
+              "value": "60 天",
+              "basis": "STATUTE",
+              "note": "自裁定送达起；有正当理由可再延 **30 天**。s.128(1)"
+            },
+            {
+              "key": "强制预缴",
+              "value": "关税（或罚款）的 7.5%",
+              "basis": "STATUTE",
+              "citation_override": "Customs Act, 1962 s.129E(i)",
+              "note": "争议标的是关税或关税+罚款的，按关税 7.5%；只争罚款的，按罚款 7.5%。"
+            },
+            {
+              "key": "预缴封顶",
+              "value": "₹10 crore",
+              "basis": "STATUTE",
+              "citation_override": "Customs Act, 1962 s.129E 但书",
+              "note": "本条项下需缴存的金额总额不超过 ₹10 crore。"
+            },
+            {
+              "key": "货物放行",
+              "value": "另行担保",
+              "basis": "STATUTE",
+              "note": "保函 / 保证金和上诉预缴是**两回事**，不要混为一谈。"
+            },
+            {
+              "key": "平均耗时",
+              "value": "1–2 年",
+              "basis": "PRACTICE_ESTIMATE"
+            }
+          ],
+          "next": "cestat"
+        },
+        {
+          "id": "cestat",
+          "label": "CESTAT",
+          "citation": "Customs Act, 1962 s.129A",
+          "cells": [
+            {
+              "key": "上诉期限",
+              "value": "3 个月",
+              "basis": "STATUTE",
+              "note": "自裁定送达起。s.129A(3)"
+            },
+            {
+              "key": "预缴：直接上 CESTAT 的",
+              "value": "7.5%",
+              "basis": "STATUTE",
+              "citation_override": "Customs Act, 1962 s.129E(ii)",
+              "note": "对 Principal Commissioner / Commissioner 作为原审机关的裁定上诉（s.129A(1)(a)）"
+            },
+            {
+              "key": "预缴：二审上 CESTAT 的",
+              "value": "10%",
+              "basis": "STATUTE",
+              "citation_override": "Customs Act, 1962 s.129E(iii)",
+              "note": "⚠对 Commissioner (Appeals) 的裁定上诉（s.129A(1)(b)）。**条文没有写「in addition to」**——和 GST s.112(8) 明写累加不同，这 10% 是否含已缴的 7.5%，条文本身不明确，实务上通常理解为总额 10%。答案里应如实说明这个不确定性，不要武断。"
+            },
+            {
+              "key": "预缴封顶",
+              "value": "₹10 crore",
+              "basis": "STATUTE",
+              "citation_override": "Customs Act, 1962 s.129E 但书"
+            },
+            {
+              "key": "预缴退还利息",
+              "value": "年 5%–36% 之间，由通知设定",
+              "basis": "STATUTE",
+              "citation_override": "Customs Act, 1962 s.129EE",
+              "note": "胜诉退还预缴款时加计利息，法定区间是 5%–36%，具体由通知定。"
+            },
+            {
+              "key": "平均耗时",
+              "value": "2–4 年",
+              "basis": "PRACTICE_ESTIMATE",
+              "note": "积案较多"
+            }
+          ],
+          "next": "high_court"
+        },
+        {
+          "id": "high_court",
+          "label": "高等法院 → 最高法院",
+          "citation": "Customs Act, 1962 s.130 / s.130E",
+          "cells": [
+            {
+              "key": "分流规则",
+              "value": "涉税率与估价的直接上最高法院",
+              "basis": "STATUTE",
+              "note": "不经高等法院。s.130E"
+            },
+            {
+              "key": "平均耗时",
+              "value": "2–5 年",
+              "basis": "PRACTICE_ESTIMATE"
+            }
+          ],
+          "next": null
+        }
+      ]
+    }
+  ]
+}

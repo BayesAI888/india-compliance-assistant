@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.4",
+  "status": "DRAFT_REQUIRES_EXPERT_APPROVAL",
+  "domains": {
+    "company_incorporation": {
+      "ask_only_if_material": [
+        "拟采用的主体形式",
+        "拟开展的业务和行业",
+        "投资人国籍及最终受益所有人和控制关系",
+        "拟注册的邦或主要经营地",
+        "拟设立或判断的目标日期"
+      ]
+    },
+    "mca_roc": {
+      "ask_only_if_material": [
+        "企业类型",
+        "CIN或注册信息",
+        "注册邦及对应ROC",
+        "涉及的Form或具体合规事项",
+        "财务年度、事件日期或申报期限"
+      ]
+    },
+    "fema_fdi_rbi": {
+      "ask_only_if_material": [
+        "交易类型",
+        "各方居民身份、国籍、最终受益所有人和控制关系",
+        "目标企业行业和具体活动",
+        "金额、币种和投资工具",
+        "交易日期以及是否已经取得审批或完成申报"
+      ]
+    },
+    "gst": {
+      "ask_only_if_material": [
+        "纳税人注册状态或GSTIN",
+        "货物或服务及交易类型",
+        "供应地、注册地和交易对手所在地",
+        "交易对手注册状态",
+        "税期、发票日期和交易金额"
+      ]
+    },
+    "tax_notice": {
+      "ask_only_if_material": [
+        "发出机构",
+        "Notice编号、Form编号和引用条款",
+        "Assessment Year、Financial Year或税期",
+        "送达日期和回复期限",
+        "争议金额、指控事项、要求行动以及完整文件"
+      ]
+    },
+    "income_tax_tds_tp": {
+      "ask_only_if_material": [
+        "相关tax year或财务年度",
+        "收款方税收居民身份、TRC及有无常设机构",
+        "付款性质与合同服务内容",
+        "关联交易类型及定价方法",
+        "是否已提交申报或收到Notice"
+      ]
+    },
+    "import_export_customs": {
+      "ask_only_if_material": [
+        "产品技术描述与拟用HS code",
+        "最终用途与是否受专门法规监管",
+        "IEC及进出口主体信息",
+        "交易条款、完税价格构成与关联关系",
+        "报关日期与已提交单据"
+      ]
+    },
+    "industry_regulation": {
+      "ask_only_if_material": [
+        "具体业务活动与经营模式",
+        "拟持股比例与控制安排",
+        "投资人国籍及最终受益所有人",
+        "拟受哪个监管机构监管与所需牌照",
+        "投资或交易日期"
+      ]
+    },
+    "litigation_cases": {
+      "ask_only_if_material": [
+        "法院与案号或中立引证",
+        "判决或order日期",
+        "要解决的具体争议",
+        "企业注册州、经营州与交易发生地",
+        "该判决是否已被复议、推翻或后续修法覆盖"
+      ]
+    }
+  },
+  "global_rules": {
+    "maximum_questions_per_clarification": 5,
+    "country_default": "India",
+    "target_date_default": "question_date",
+    "never_guess": [
+      "company_name",
+      "amount",
+      "tax_rate",
+      "form_number",
+      "document_number",
+      "date",
+      "negation",
+      "exception",
+      "state_threshold",
+      "adoption_date",
+      "jurisdiction"
+    ],
+    "maximum_questions_notice_domain": 3,
+    "clarification_note": "非Notice类最多追问5项；Notice类按《AI检索与回答规范》§5.1仍为最多3组信息。",
+    "legal_as_of_note": "每个“依据充分”的回答必须展示legal_as_of，取被引用版本中最早的法律现行性核验时间；不是失效日，也不是知识库更新时间。"
+  },
+  "aligned_with": "《AI检索与回答规范 V1.4》§5.1、§6、§8",
+  "jurisdiction_rules": {
+    "required_for_state_questions": [
+      "所涉辖区（邦或中央直辖区）"
+    ],
+    "note": "州级问题必须先确定辖区。实体条文用CGST对应条文回答并标注镜像关系；四类州级差异参数以该辖区记录为准，缺哪项就该项返回“暂时无法确认”，不整题拒答。",
+    "rate_questions": "GST税率全国统一，按中央通知回答，不因辖区参数缺失而拒答。"
+  }
+}
